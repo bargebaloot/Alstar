@@ -1,0 +1,216 @@
+﻿@model Alstar.Models.mLink
+@{
+    Alstar.Models.database.AlstarDb AlstarDb = new Alstar.Models.database.AlstarDb();
+    var aCat = (from a in AlstarDb.tbl_category
+                where (a.category_parent >= 11 && a.category_parent <= 35) && a.category_id != 12 && a.category_href.Length > 1
+                select a);
+}
+<div class="page-content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <h4>
+                            ویرایش
+                        </h4>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end page-title-box -->
+            </div>
+        </div>
+        <!-- Content Header (Page header) -->
+        @using (Html.BeginForm("LinkPost", "mLink", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            if (ViewBag.error != null)
+            {
+                <div class="col-md-8 form-group" style="margin-top:30px;margin-right:3px;">
+                    <div class="alert alert-dismissable alert-danger">
+                        @ViewBag.error
+                    </div>
+                </div>
+            }
+ <!-- Main content -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+
+                            <form class="" action="#">
+                                <div class="box-body">
+                                    @Html.TextBoxFor(model => model.link_id, new { @type = "hidden" })
+                                    </div>
+                                    @if (Model.link_status != 3)
+                                    {
+                                        <div class="form-group">
+                                            <input type="hidden" name="link_img" id="link_img" value="@Model.link_img" />
+                                            <label class="col-sm-2 control-label" for="img_file">تصویر   :</label>
+                                            <div class="col-sm-4">
+                                                <img src="~/images/link/@Model.link_img" width="70" height="70" />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="file" name="img_file" id="" value="@Model.link_img" />
+                                            </div>
+                                        </div>
+                                    }
+
+                                    @if (Model.link_status == 3 || Model.link_status == 6)
+                                    {
+                                        <div class="form-group">
+                                            <input type="hidden" name="link_file" id="link_file" value="@Model.link_file" />
+                                            <label class="col-sm-2 control-label" for="img_file2">فایل (فرمت های مجاز: .pdf, .docx, .rar)   :</label>
+                                            <div class="col-sm-4">
+                                                <label>@Model.link_file</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="file" name="img_file2" id="" value="@Model.link_file" />
+                                            </div>
+                                        </div>
+
+                                    }
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="link_title">عنوان : </label>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(model => model.link_title, new { @placeholder = "عنوان", @class = "form-control force" })
+                                        </div>
+                                    </div>
+                                    @if (Model.link_status == 4)//کارکنان
+                                    {
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="link_title_en">سمت : </label>
+                                            <div class="col-sm-6">
+                                                @Html.TextBoxFor(model => model.link_title_en, new { @placeholder = "سمت", @class = "form-control force" })
+                                            </div>
+                                        </div>
+                                    }
+                                    @if (Model.link_status == 7)
+                                    {
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="link_url"> آدرس :</label>
+                                            <div class="col-sm-6">
+                                                @Html.TextBoxFor(model => model.link_url, new { @placeholder = "آدرس", @class = "form-control force" })
+                                            </div>
+                                        </div>
+                                    }
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 text-left" for="link_status">محل نمایش لینک : </label>
+                                        <div class="col-sm-3">
+                                            <select id="link_status" name="link_status">
+                                                <option value="1" @if (Model.link_status == 1) { @: selected
+                                                                                                                                                                                                                                                                            }>
+                                                    مدارک و افتخارات
+                                                </option>
+                                                <option value="2" @if (Model.link_status == 2) { @: selected
+                                                                                                                                                                                                                                                                            }>
+                                                    برچسب ها
+                                                </option>
+                                                <option value="3" @if (Model.link_status == 3) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                            }>
+                                                    فرم های پیشنهاد بیمه
+                                                </option>
+                                                <option value="4" @if (Model.link_status == 4) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                                                            }>
+                                                    کارکنان شرکت
+                                                </option>
+                                                <option value="5" @if (Model.link_status == 5) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }>
+                                                    مشتریان ما
+                                                </option>
+                                                <option value="6" @if (Model.link_status == 6) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }>
+                                                    pdf های محصولات
+                                                </option>
+                                                <option value="7" @if (Model.link_status == 7) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }>
+                                                    تصاویر اینستاگرام
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    @if (Model.link_status == 6)
+                                    {
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="link_cat">دسته بندی pdf : </label>
+                                            <div class="col-sm-6">
+                                                <select name="link_cat" id="link_cat">
+                                                    <option value="0">-</option>
+                                                    @{
+                                                        foreach (var vCat in aCat)
+                                                        {
+
+                                                            <option value="@vCat.category_id" @if (Model.link_cat == vCat.category_id) { @: selected
+                                                                                                                                                                                                                                                                                                                                                    }>
+                                                                @vCat.category_title
+                                                            </option>
+
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                                        }
+
+                                    @if (Model.link_status == 2)
+                                    {
+                                        <div class="form-group">
+                                            <div class="box-body pad">
+                                                <label class="col-sm-2 control-label" for="link_exp"> شرح :</label>
+                                                <div class="col-sm-10">
+                                                    <textarea id="link_exp" name="link_exp" rows="10" cols="70">@Model.link_exp</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-info pull-right sub_validation">ثبت</button>
+                                    </div>
+                                    <!-- /.box-footer -->
+                            </form>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+                </div>
+        <!-- /.content -->
+                                                        }
+
+        <script src="~/panel/bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="~/panel/bower_components/ckeditor/ckeditor.js"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <!--<script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>-->
+        <!-- TinyMCE Editor -->
+        <script src="~/panel/bower_components/tinymce/tinymce.min.js"></script>
+        <script>
+            tinymce.init({
+                selector: 'textarea#mytextarea',
+                plugins: 'advlist autolink link lists preview table code pagebreak',
+                menubar: false,
+                language: 'fa',
+                height: 300,
+                relative_urls: false,
+                toolbar: 'undo redo | removeformat preview code | fontsizeselect bullist numlist | alignleft aligncenter alignright alignjustify | bold italic | pagebreak table link',
+            });
+            $(function () {
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace('link_exp')
+                //bootstrap WYSIHTML5 - text editor
+                $('.textarea').wysihtml5()
+            })
+            $(function () {
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace('link_exp_en')
+                //bootstrap WYSIHTML5 - text editor
+                $('.textarea').wysihtml5()
+            })
+        </script>

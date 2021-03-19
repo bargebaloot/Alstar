@@ -1,0 +1,143 @@
+﻿@model ShafaGostar.Models.mProduct
+@{
+    ShafaGostar.Models.database.ShafaGostarDb ShafaGostarDb = new ShafaGostar.Models.database.ShafaGostarDb();
+    Layout = "~/Views/Shared/_MLayout.cshtml";
+}
+<section class="content-header">
+ <h1>
+ محصولات </h1>
+</section>
+<!-- Content Header (Page header) -->
+@using (Html.BeginForm("ProductPost", "mProduct", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+ if (ViewBag.error != null)
+ {
+  <div class="col-md-8 form-group" style="margin-top:30px;margin-right:3px;">
+   <div class="alert alert-dismissable alert-danger">
+    @ViewBag.error
+   </div>
+  </div>
+ }
+ <!-- Main content -->
+ <section class="content">
+  <div class="row">
+   <!-- right column -->
+   <div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+     <!-- form start -->
+     <form class="form-horizontal">
+      <div class="box-body">
+          @Html.TextBoxFor(model => model.product_id, new { @type = "hidden" })
+          <div class="form-group">
+              <input type="hidden" name="product_img1" id="product_img1" value="@Model.product_img1" />
+              <label class="col-sm-2 control-label" for="img_file1">تصویر1   :</label>
+              <div class="col-sm-2">
+                  <img src="~/images/products/@Model.product_img1" width="70" height="70" />
+              </div>
+              <div class="col-sm-6">
+                  <input type="file" name="img_file1" id="" value="@Model.product_img1" />
+              </div>
+          </div>
+       <div class="form-group">
+        <label class="col-sm-2 control-label" for="product_title1">1عنوان : </label>
+        <div class="col-sm-6">
+         @Html.TextBoxFor(model => model.product_title1, new { @placeholder = "", @class = "form-control force" })
+        </div>
+       </div>
+          <div class="form-group">
+              <label class="col-sm-2 control-label" for="product_cat">دسته بندی :</label>
+              <div class="col-sm-6">
+                  <select id="product_cat" name="product_cat">
+                      @{ 
+                          var vPrd = (from a in ShafaGostarDb.tbl_category
+                                   where a.category_parent == 6
+                                   select a).OrderBy(b => b.category_id).ToList();
+
+                      }
+                      @foreach (var item in vPrd)
+                      {
+                        <option value="@item.category_id"
+                                @if (Model.product_parent == item.category_id) { @: selected
+                                   }>
+                            @item.category_title
+                        </option>
+                      }
+                    
+                  </select>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-sm-2 control-label" for="product_img_alt">متن جایگزین تصویر: </label>
+              <div class="col-sm-6">
+                  @Html.TextBoxFor(model => model.product_img_alt, new { @placeholder = "", @class = "form-control force" })
+              </div>
+          </div>
+           <div class="form-group">
+              <div class="box-body pad">
+                  <label class="col-sm-2 control-label" for="product_summery"> خلاصه  :</label>
+                  <div class="col-sm-10">
+                      <textarea id="product_summery" name="product_summery" rows="10" cols="70">@Model.product_summery</textarea>
+                  </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="box-body pad">
+                  <label class="col-sm-2 control-label" for="product_exp"> شرح  :</label>
+                  <div class="col-sm-10">
+                      <textarea id="product_exp" name="product_exp" rows="10" cols="70">@Model.product_exp</textarea>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer">
+       <button type="submit" class="btn btn-info pull-right sub_validation">ثبت</button>
+      </div>
+      <!-- /.box-footer -->
+     </form>
+    </div>
+    <!-- /.box -->
+   </div>
+   <!--/.col (right) -->
+  </div>
+  <!-- /.row -->
+ </section>
+        <!-- /.content -->
+}
+
+
+<script src="~/panel/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="~/panel/bower_components/ckeditor/ckeditor.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<!--<script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>-->
+<!-- TinyMCE Editor -->
+<script src="~/panel/bower_components/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea#mytextarea',
+        plugins : 'advlist autolink link lists preview table code pagebreak',
+        menubar: false,
+        language: 'fa',
+        height: 300,
+        relative_urls: false,
+        toolbar: 'undo redo | removeformat preview code | fontsizeselect bullist numlist | alignleft aligncenter alignright alignjustify | bold italic | pagebreak table link',
+    });
+  $(function () {
+     CKEDITOR.replace('product_exp')
+      $('.textarea').wysihtml5()
+  })
+  $(function () {
+     CKEDITOR.replace('product_exp_en')
+      $('.textarea').wysihtml5()
+  })
+  $(function () {
+      CKEDITOR.replace('product_summery_en')
+      $('.textarea').wysihtml5()
+  })
+  $(function () {
+      CKEDITOR.replace('product_summery')
+      $('.textarea').wysihtml5()
+  })
+</script>

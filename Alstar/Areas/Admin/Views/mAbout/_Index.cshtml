@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Alstar.Models.mAbout>
+@{
+    Alstar.Models.database.AlstarDb AlstarDb = new Alstar.Models.database.AlstarDb();
+    Alstar.da.daCategory c = new Alstar.da.daCategory();
+}
+<!-- Main content -->
+<div class="row">
+    <div class="col-12">
+        <div class="card m-b-30">
+            <div class="card-body">
+                <h4 class="mt-0 header-title"> </h4>
+                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>تصویر</th>
+                            <th>عنوان1</th>
+                            <th>عنوان2</th>
+                            <th>متن جایگزین تصویر</th>
+                            <th>نوع متن</th>
+                            <th>ویرایش</th>
+                            <th>حذف</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr id="@item.about_us_id">
+                                <td>
+                                    <img width="70" height="70" src="~/images/about/@item.about_us_img" />
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.about_us_title)</td>
+                                <td>@Html.DisplayFor(modelItem => item.about_us_exp_two)</td>
+
+                                <td>@Html.DisplayFor(modelItem => item.about_us_img_alt)</td>
+                                <td>
+
+                                    @if (item.about_us_type == 1)
+                                    {
+                                        <span>تاریخچه </span>
+                                    }
+                                    @if (item.about_us_type == 2)
+                                    {
+                                        <span>   چشم انداز </span>
+                                    }
+                                    @if (item.about_us_type == 3)
+                                    {
+                                        <span>   درباره مدیریت  </span>
+                                    }
+                                    @if (item.about_us_type == 4)
+                                    {
+                                        <span>   سوابق کاری و تحصیلی  </span>
+                                    }
+                                    @if (item.about_us_type == 5)
+                                    {
+                                        <span>   پرورش نماینده  </span>
+                                    }
+                                    @if (item.about_us_type == 6)
+                                    {
+                                        <span>    گزارش عملکرد مالی  </span>
+                                    }
+                                    @if (item.about_us_type == 7)
+                                    {
+                                        <span> پرداخت اقساط  </span>
+                                    }
+                                </td>
+
+
+                                <td><a href="~/mAbout/AboutGet?pId=@item.about_us_id" class="btn btn-info icon-preview"><i data-toggle="tooltip" data-placement="right" data-original-title="ویرایش" class="dripicons-pencil"> </i></a></td>
+                                <td><input value="@item.about_us_id" name="radioSelect" type="radio"></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+ 
+

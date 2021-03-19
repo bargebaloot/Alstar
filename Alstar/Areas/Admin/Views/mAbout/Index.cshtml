@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Alstar.Models.mAbout>
+@{
+    Alstar.Models.database.AlstarDb AlstarDb = new Alstar.Models.database.AlstarDb();
+    Alstar.da.daCategory c = new Alstar.da.daCategory();
+}
+<div class="page-content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="">
+                        <button class="btn btn-danger delete" type="submit">
+                            <span class="fa fa-trash"></span>
+                            حذف
+                        </button>
+                        @Html.ActionLink("جدید", "AboutGet", "mAbout", "", new { @class = "btn btn-success" })
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end page-title-box -->
+            </div>
+        </div>
+        <div id="panel-content-link">
+            @Html.Partial("_Index")
+        </div>
+        <!-- /.content -->
+        <div class="clear-fix"></div>
+        @section scripts{
+            <script>
+                $('.delete').click(function (event) {
+                    url = get_current_url();
+                    event.preventDefault();
+                    var r = confirm("آیا از حذف رکورد اطمینان دارید؟");
+                    if (r == true) {
+                        var pIds = $('input[name="radioSelect"]:radio:checked').val();
+                        $.ajax({
+                            url: url + '/RemoveAbout',
+                            dataType: "json",
+                            data: { "pId": pIds },
+                            type: "POST",
+                            async: "true",
+                            cache: false,
+                            beforeSend: function () {
+                            },
+                            success: function (data) {
+                                $("#" + pIds).remove()
+                            }
+                        });
+                    }
+                });
+                function get_current_url() {
+                    project = window.location.pathname.split('/');
+                    url = window.location.protocol + '//' + window.location.host + '/' + project[1];
+                    return url;
+                }
+            </script>
+
+        }
+
+    </div>
+</div>
+

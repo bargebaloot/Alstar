@@ -1,0 +1,83 @@
+﻿@model Alstar.Models.mSlider
+@{
+    Alstar.Models.database.AlstarDb KarafarinDb =
+        new Alstar.Models.database.AlstarDb();
+}
+<div class="page-content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <h4>
+                            ویرایش اسلاید
+                        </h4>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end page-title-box -->
+            </div>
+        </div>
+        @using (Html.BeginForm("SliderPost", "mSlider", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            if (ViewBag.error != null)
+            {
+                <div class="col-md-8 form-group" style="margin-top:30px;margin-right:3px;">
+                    <div class="alert alert-dismissable alert-danger">
+                        @ViewBag.error
+                    </div>
+                </div>
+            }
+        <!-- end page title -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+
+                            <form class="" action="#">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.slider_id, new { @type = "hidden" })
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="hidden" name="slider_img" id="slider_img" value="@Model.slider_img" />
+                                    <label class="col-sm-3 control-label" for="img_file">تصویر</label>
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <img src="~/images/slider/@Model.slider_img" width="70" height="70" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="file" name="img_file" id="" value="@Model.slider_img" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="slider_title">عنوان : </label>
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(model => model.slider_title, new { @placeholder = "عنوان", @class = "form-control force" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                            ارسال
+                                        </button>
+                                        <button type="reset" class="btn btn-secondary waves-effect m-l-5">
+                                            لغو
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+        }
+    </div><!-- container fluid -->
+</div> <!-- Page content Wrapper -->

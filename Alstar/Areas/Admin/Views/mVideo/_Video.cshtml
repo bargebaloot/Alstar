@@ -1,0 +1,82 @@
+﻿@model Alstar.Models.mVideo
+@{
+    Alstar.Models.database.AlstarDb AlstarDb = new Alstar.Models.database.AlstarDb();
+}
+<div class="page-content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <h4>
+                            ویدئو
+                        </h4>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end page-title-box -->
+            </div>
+        </div>
+        <!-- Content Header (Page header) -->
+        @using (Html.BeginForm("VideoPost", "mVideo", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            if (ViewBag.error != null)
+            {
+                <div class="col-md-8 form-group" style="margin-top:30px;margin-right:3px;">
+                    <div class="alert alert-dismissable alert-danger">
+                        @ViewBag.error
+                    </div>
+                </div>
+            }
+        <!-- Main content -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+
+                            <form class="" action="#">
+                                <div class="box-body">
+                                    @Html.TextBoxFor(model => model.video_id, new { @type = "hidden" })
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="video_title">عنوان : </label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(model => model.video_title, new { @placeholder = "عنوان", @class = "form-control force" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="video_href">نشانی ویدئو : </label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(model => model.video_href, new { @placeholder = "نشانی ویدئو", @class = "form-control force", @rows = "7" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="video_code">کد ویدئو  : </label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(model => model.video_code, new { @placeholder = "کد ویدئو", @class = "form-control force", @rows = "7" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="video_alt">متن جایگزین ویدئو : </label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(model => model.video_alt, new { @placeholder = "متن جایگزین ویدئو", @class = "form-control force", @rows = "7" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-info pull-right sub_validation">ثبت</button>
+                                </div>
+                                <!-- /.box-footer -->
+                            </form>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div>
+        <!-- /.content -->
+        }
+    </div> 
+       </div>

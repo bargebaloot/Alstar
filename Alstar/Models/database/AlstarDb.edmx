@@ -1,0 +1,832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AlstarDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_about">
+          <Key>
+            <PropertyRef Name="about_us_id" />
+          </Key>
+          <Property Name="about_us_id" Type="int" Nullable="false" />
+          <Property Name="about_us_img" Type="nvarchar" MaxLength="150" />
+          <Property Name="about_us_exp_one" Type="ntext" />
+          <Property Name="about_us_exp_two" Type="ntext" />
+          <Property Name="about_us_title" Type="nvarchar" MaxLength="150" />
+          <Property Name="about_us_img_width" Type="nvarchar" MaxLength="50" />
+          <Property Name="about_us_img_height" Type="nvarchar" MaxLength="50" />
+          <Property Name="about_us_img_alt" Type="nvarchar" MaxLength="50" />
+          <Property Name="about_us_type" Type="int" />
+          <Property Name="about_exp_en_two" Type="ntext" />
+          <Property Name="about_exp_en_one" Type="ntext" />
+          <Property Name="about_summery" Type="ntext" />
+          <Property Name="about_lang" Type="int" />
+          <Property Name="about_type" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_article">
+          <Key>
+            <PropertyRef Name="article_id" />
+          </Key>
+          <Property Name="article_id" Type="int" Nullable="false" />
+          <Property Name="article_title" Type="nvarchar" MaxLength="200" />
+          <Property Name="article_date" Type="nvarchar" MaxLength="30" />
+          <Property Name="article_summery" Type="ntext" />
+          <Property Name="article_img" Type="nvarchar" MaxLength="150" />
+          <Property Name="article_img_alt" Type="nvarchar(max)" />
+          <Property Name="article_exp" Type="ntext" />
+          <Property Name="article_img_width" Type="nvarchar" MaxLength="10" />
+          <Property Name="article_img_height" Type="nvarchar" MaxLength="10" />
+          <Property Name="article_writer" Type="nvarchar" MaxLength="50" />
+          <Property Name="article_visit" Type="int" />
+          <Property Name="article_type" Type="int" />
+          <Property Name="article_img2" Type="nvarchar" MaxLength="150" />
+          <Property Name="article_img3" Type="nvarchar" MaxLength="150" />
+          <Property Name="article_file" Type="nvarchar" MaxLength="150" />
+          <Property Name="article_href" Type="nvarchar" MaxLength="150" />
+          <Property Name="article_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="article_lang" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="category_parent" Type="int" />
+          <Property Name="category_href" Type="nvarchar" MaxLength="500" />
+          <Property Name="category_title" Type="nvarchar" MaxLength="500" />
+          <Property Name="category_show_loc" Type="int" />
+          <Property Name="category_img" Type="nvarchar" MaxLength="250" />
+          <Property Name="category_title_en" Type="nvarchar" MaxLength="250" />
+          <Property Name="category_href_en" Type="nvarchar" MaxLength="500" />
+          <Property Name="category_type" Type="int" />
+          <Property Name="category_lang" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_center">
+          <Key>
+            <PropertyRef Name="center_id" />
+          </Key>
+          <Property Name="center_id" Type="int" Nullable="false" />
+          <Property Name="center_title" Type="nvarchar" MaxLength="50" />
+          <Property Name="center_cat" Type="int" />
+          <Property Name="center_info" Type="nvarchar" MaxLength="150" />
+          <Property Name="center_img" Type="nvarchar" MaxLength="150" />
+          <Property Name="center_city" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_contact">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="150" />
+          <Property Name="user_email" Type="nvarchar" MaxLength="150" />
+          <Property Name="user_text" Type="ntext" />
+          <Property Name="user_subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="user_date" Type="nvarchar" MaxLength="25" />
+          <Property Name="contact_type" Type="int" />
+          <Property Name="user_file" Type="nvarchar" MaxLength="150" />
+          <Property Name="contact_lang" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_customer">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="150" />
+          <Property Name="user_email" Type="nvarchar" MaxLength="150" />
+          <Property Name="user_text" Type="ntext" />
+          <Property Name="user_subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="user_date" Type="nvarchar" MaxLength="25" />
+          <Property Name="user_pp_id" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_customer_feedback">
+          <Key>
+            <PropertyRef Name="cust_feedback_id" />
+          </Key>
+          <Property Name="cust_feedback_id" Type="int" Nullable="false" />
+          <Property Name="cust_feedback_title" Type="nvarchar" MaxLength="150" />
+          <Property Name="cust_feedback_exp" Type="ntext" />
+          <Property Name="cust_feedback_img" Type="nvarchar" MaxLength="150" />
+          <Property Name="cust_company_title" Type="nvarchar" MaxLength="150" />
+          <Property Name="cust_address" Type="nvarchar" MaxLength="50" />
+          <Property Name="cust_feedback_img_width" Type="nvarchar" MaxLength="10" />
+          <Property Name="cust_feedback_img_height" Type="nvarchar" MaxLength="10" />
+          <Property Name="cust_feedback_project_img" Type="nvarchar" MaxLength="150" />
+          <Property Name="cust_feedback_lang" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_faq">
+          <Key>
+            <PropertyRef Name="faq_id" />
+          </Key>
+          <Property Name="faq_id" Type="int" Nullable="false" />
+          <Property Name="faq_question" Type="nvarchar" MaxLength="500" />
+          <Property Name="faq_answer" Type="nvarchar" MaxLength="500" />
+          <Property Name="faq_exp" Type="ntext" />
+          <Property Name="faq_question_en" Type="nvarchar" MaxLength="500" />
+          <Property Name="faq_answer_en" Type="nvarchar" MaxLength="500" />
+          <Property Name="faq_lang" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_gallery">
+          <Key>
+            <PropertyRef Name="gallery_id" />
+          </Key>
+          <Property Name="gallery_id" Type="int" Nullable="false" />
+          <Property Name="gallery_title" Type="nvarchar" MaxLength="350" />
+          <Property Name="gallery_date" Type="nvarchar" MaxLength="30" />
+          <Property Name="gallery_is_fa" Type="smallint" />
+          <Property Name="gallery_image" Type="nvarchar" MaxLength="150" />
+          <Property Name="gallery_visit" Type="int" />
+          <Property Name="gallery_alt" Type="nvarchar" MaxLength="150" />
+          <Property Name="gallery_img_width" Type="nvarchar" MaxLength="20" />
+          <Property Name="gallery_img_height" Type="nvarchar" MaxLength="20" />
+          <Property Name="gallery_summery" Type="ntext" />
+          <Property Name="gallery_exp" Type="ntext" />
+          <Property Name="gallery_summery_en" Type="ntext" />
+          <Property Name="gallery_exp_en" Type="ntext" />
+          <Property Name="gallery_cat" Type="int" />
+          <Property Name="gallery_title_en" Type="nvarchar" MaxLength="350" />
+          <Property Name="gallery_lang" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_link">
+          <Key>
+            <PropertyRef Name="link_id" />
+          </Key>
+          <Property Name="link_id" Type="int" Nullable="false" />
+          <Property Name="link_title" Type="ntext" />
+          <Property Name="link_url" Type="nvarchar" MaxLength="150" />
+          <Property Name="link_img" Type="nvarchar" MaxLength="150" />
+          <Property Name="link_exp" Type="ntext" />
+          <Property Name="link_status" Type="int" />
+          <Property Name="link_cat" Type="int" />
+          <Property Name="link_title_en" Type="ntext" />
+          <Property Name="link_exp_en" Type="ntext" />
+          <Property Name="link_file" Type="nvarchar" MaxLength="150" />
+          <Property Name="link_lang" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_news">
+          <Key>
+            <PropertyRef Name="news_id" />
+          </Key>
+          <Property Name="news_id" Type="int" Nullable="false" />
+          <Property Name="news_title" Type="nvarchar" MaxLength="150" />
+          <Property Name="news_image" Type="nvarchar" MaxLength="150" />
+          <Property Name="news_visit" Type="int" Nullable="false" />
+          <Property Name="news_index" Type="smallint" />
+          <Property Name="news_date" Type="nvarchar" MaxLength="10" />
+          <Property Name="news_category" Type="int" />
+          <Property Name="news_exp" Type="nvarchar(max)" />
+          <Property Name="news_summery" Type="nvarchar(max)" />
+          <Property Name="news_writer" Type="nvarchar" MaxLength="50" />
+          <Property Name="news_img_alt" Type="nvarchar(max)" />
+          <Property Name="news_href" Type="nvarchar" MaxLength="150" />
+          <Property Name="news_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="news_lang" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="product_title" Type="nvarchar" MaxLength="250" />
+          <Property Name="product_img1" Type="nvarchar" MaxLength="150" />
+          <Property Name="product_img_alt" Type="nvarchar(max)" />
+          <Property Name="product_price" Type="nvarchar" MaxLength="20" />
+          <Property Name="product_exp" Type="nvarchar(max)" />
+          <Property Name="product_summery" Type="nvarchar(max)" />
+          <Property Name="product_cat" Type="int" />
+          <Property Name="product_save" Type="nvarchar" MaxLength="50" />
+          <Property Name="product_exist" Type="int" />
+          <Property Name="product_visit" Type="int" Nullable="false" />
+          <Property Name="product_img2" Type="nvarchar" MaxLength="150" />
+          <Property Name="product_title1" Type="nvarchar" MaxLength="250" />
+          <Property Name="product_title2" Type="nvarchar" MaxLength="250" />
+          <Property Name="product_parent" Type="int" />
+          <Property Name="product_lang" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_slider">
+          <Key>
+            <PropertyRef Name="slider_id" />
+          </Key>
+          <Property Name="slider_id" Type="int" Nullable="false" />
+          <Property Name="slider_img" Type="nvarchar" MaxLength="1000" />
+          <Property Name="slider_link" Type="nvarchar" MaxLength="50" />
+          <Property Name="slider_sort" Type="int" />
+          <Property Name="slider_title" Type="nvarchar" MaxLength="250" />
+          <Property Name="slider_exp" Type="nvarchar(max)" />
+          <Property Name="slider_img_alt" Type="nvarchar(max)" />
+          <Property Name="slider_lang" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_email" Type="nvarchar" MaxLength="200" />
+          <Property Name="user_pass" Type="nvarchar" MaxLength="100" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_birthday" Type="datetime2" Precision="7" />
+          <Property Name="user_mobile" Type="nvarchar" MaxLength="11" />
+          <Property Name="user_phone" Type="nvarchar" MaxLength="11" />
+          <Property Name="user_province" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_city" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_postal_code" Type="nvarchar" MaxLength="20" />
+          <Property Name="user_addr" Type="nvarchar" MaxLength="255" />
+          <Property Name="user_pic" Type="nvarchar" MaxLength="255" />
+          <Property Name="user_access" Type="int" />
+          <Property Name="user_reg_date" Type="datetime2" Precision="7" />
+          <Property Name="user_is_sex" Type="bit" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tbl_video">
+          <Key>
+            <PropertyRef Name="video_id" />
+          </Key>
+          <Property Name="video_id" Type="int" Nullable="false" />
+          <Property Name="video_title" Type="nvarchar" MaxLength="250" />
+          <Property Name="video_date" Type="nvarchar" MaxLength="30" />
+          <Property Name="video_href" Type="nvarchar" MaxLength="150" />
+          <Property Name="video_alt" Type="nvarchar" MaxLength="150" />
+          <Property Name="video_code" Type="bigint" />
+          <Property Name="video_lang" Type="int" />
+        </EntityType>
+        <EntityContainer Name="AlstarDbModelStoreContainer">
+          <EntitySet Name="tbl_about" EntityType="Self.tbl_about" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_article" EntityType="Self.tbl_article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_center" EntityType="Self.tbl_center" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_contact" EntityType="Self.tbl_contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_customer" EntityType="Self.tbl_customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_customer_feedback" EntityType="Self.tbl_customer_feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_faq" EntityType="Self.tbl_faq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_gallery" EntityType="Self.tbl_gallery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_link" EntityType="Self.tbl_link" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_news" EntityType="Self.tbl_news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_product" EntityType="Self.tbl_product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_slider" EntityType="Self.tbl_slider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_users" EntityType="Self.tbl_users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_video" EntityType="Self.tbl_video" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AlstarDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_about">
+          <Key>
+            <PropertyRef Name="about_us_id" />
+          </Key>
+          <Property Name="about_us_id" Type="Int32" Nullable="false" />
+          <Property Name="about_us_img" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="about_us_exp_one" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="about_us_exp_two" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="about_us_title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="about_us_img_width" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="about_us_img_height" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="about_us_img_alt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="about_us_type" Type="Int32" />
+          <Property Name="about_exp_en_two" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="about_exp_en_one" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="about_summery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="about_lang" Type="Int32" />
+          <Property Name="about_type" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_article">
+          <Key>
+            <PropertyRef Name="article_id" />
+          </Key>
+          <Property Name="article_id" Type="Int32" Nullable="false" />
+          <Property Name="article_title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="article_date" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="article_summery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="article_img" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="article_img_alt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="article_exp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="article_img_width" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="article_img_height" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="article_writer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="article_visit" Type="Int32" />
+          <Property Name="article_type" Type="Int32" />
+          <Property Name="article_img2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="article_img3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="article_file" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="article_href" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="article_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="article_lang" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="category_parent" Type="Int32" />
+          <Property Name="category_href" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="category_title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="category_show_loc" Type="Int32" />
+          <Property Name="category_img" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="category_title_en" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="category_href_en" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="category_type" Type="Int32" />
+          <Property Name="category_lang" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_center">
+          <Key>
+            <PropertyRef Name="center_id" />
+          </Key>
+          <Property Name="center_id" Type="Int32" Nullable="false" />
+          <Property Name="center_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="center_cat" Type="Int32" />
+          <Property Name="center_info" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="center_img" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="center_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_contact">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="user_name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="user_email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="user_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="user_date" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="contact_type" Type="Int32" />
+          <Property Name="user_file" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="contact_lang" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_customer">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="user_name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="user_email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="user_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="user_date" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="user_pp_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_customer_feedback">
+          <Key>
+            <PropertyRef Name="cust_feedback_id" />
+          </Key>
+          <Property Name="cust_feedback_id" Type="Int32" Nullable="false" />
+          <Property Name="cust_feedback_title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="cust_feedback_exp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cust_feedback_img" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="cust_company_title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="cust_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cust_feedback_img_width" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cust_feedback_img_height" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cust_feedback_project_img" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="cust_feedback_lang" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_faq">
+          <Key>
+            <PropertyRef Name="faq_id" />
+          </Key>
+          <Property Name="faq_id" Type="Int32" Nullable="false" />
+          <Property Name="faq_question" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="faq_answer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="faq_exp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="faq_question_en" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="faq_answer_en" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="faq_lang" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_gallery">
+          <Key>
+            <PropertyRef Name="gallery_id" />
+          </Key>
+          <Property Name="gallery_id" Type="Int32" Nullable="false" />
+          <Property Name="gallery_title" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="gallery_date" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="gallery_is_fa" Type="Int16" />
+          <Property Name="gallery_image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="gallery_visit" Type="Int32" />
+          <Property Name="gallery_alt" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="gallery_img_width" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="gallery_img_height" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="gallery_summery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gallery_exp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gallery_summery_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gallery_exp_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gallery_cat" Type="Int32" />
+          <Property Name="gallery_title_en" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="gallery_lang" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_link">
+          <Key>
+            <PropertyRef Name="link_id" />
+          </Key>
+          <Property Name="link_id" Type="Int32" Nullable="false" />
+          <Property Name="link_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="link_url" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="link_img" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="link_exp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="link_status" Type="Int32" />
+          <Property Name="link_cat" Type="Int32" />
+          <Property Name="link_title_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="link_exp_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="link_file" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="link_lang" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_news">
+          <Key>
+            <PropertyRef Name="news_id" />
+          </Key>
+          <Property Name="news_id" Type="Int32" Nullable="false" />
+          <Property Name="news_title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="news_image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="news_visit" Type="Int32" Nullable="false" />
+          <Property Name="news_index" Type="Int16" />
+          <Property Name="news_date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="news_category" Type="Int32" />
+          <Property Name="news_exp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="news_summery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="news_writer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="news_img_alt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="news_href" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="news_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="news_lang" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="product_img1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="product_img_alt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="product_price" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="product_exp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="product_summery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="product_cat" Type="Int32" />
+          <Property Name="product_save" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="product_exist" Type="Int32" />
+          <Property Name="product_visit" Type="Int32" Nullable="false" />
+          <Property Name="product_img2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="product_title1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="product_title2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="product_parent" Type="Int32" />
+          <Property Name="product_lang" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_slider">
+          <Key>
+            <PropertyRef Name="slider_id" />
+          </Key>
+          <Property Name="slider_id" Type="Int32" Nullable="false" />
+          <Property Name="slider_img" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="slider_link" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="slider_sort" Type="Int32" />
+          <Property Name="slider_title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="slider_exp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="slider_img_alt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="slider_lang" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="user_pass" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_birthday" Type="DateTime" Precision="7" />
+          <Property Name="user_mobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="user_phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="user_province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_postal_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="user_addr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="user_pic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="user_access" Type="Int32" />
+          <Property Name="user_reg_date" Type="DateTime" Precision="7" />
+          <Property Name="user_is_sex" Type="Boolean" />
+          <Property Name="user_name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_video">
+          <Key>
+            <PropertyRef Name="video_id" />
+          </Key>
+          <Property Name="video_id" Type="Int32" Nullable="false" />
+          <Property Name="video_title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="video_date" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="video_href" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="video_alt" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="video_code" Type="Int64" />
+          <Property Name="video_lang" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="AlstarDb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_about" EntityType="Self.tbl_about" />
+          <EntitySet Name="tbl_article" EntityType="Self.tbl_article" />
+          <EntitySet Name="tbl_category" EntityType="Self.tbl_category" />
+          <EntitySet Name="tbl_center" EntityType="Self.tbl_center" />
+          <EntitySet Name="tbl_contact" EntityType="Self.tbl_contact" />
+          <EntitySet Name="tbl_customer" EntityType="Self.tbl_customer" />
+          <EntitySet Name="tbl_customer_feedback" EntityType="Self.tbl_customer_feedback" />
+          <EntitySet Name="tbl_faq" EntityType="Self.tbl_faq" />
+          <EntitySet Name="tbl_gallery" EntityType="Self.tbl_gallery" />
+          <EntitySet Name="tbl_link" EntityType="Self.tbl_link" />
+          <EntitySet Name="tbl_news" EntityType="Self.tbl_news" />
+          <EntitySet Name="tbl_product" EntityType="Self.tbl_product" />
+          <EntitySet Name="tbl_slider" EntityType="Self.tbl_slider" />
+          <EntitySet Name="tbl_users" EntityType="Self.tbl_users" />
+          <EntitySet Name="tbl_video" EntityType="Self.tbl_video" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AlstarDbModelStoreContainer" CdmEntityContainer="AlstarDb">
+          <EntitySetMapping Name="tbl_about">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_about">
+              <MappingFragment StoreEntitySet="tbl_about">
+                <ScalarProperty Name="about_us_id" ColumnName="about_us_id" />
+                <ScalarProperty Name="about_us_img" ColumnName="about_us_img" />
+                <ScalarProperty Name="about_us_exp_one" ColumnName="about_us_exp_one" />
+                <ScalarProperty Name="about_us_exp_two" ColumnName="about_us_exp_two" />
+                <ScalarProperty Name="about_us_title" ColumnName="about_us_title" />
+                <ScalarProperty Name="about_us_img_width" ColumnName="about_us_img_width" />
+                <ScalarProperty Name="about_us_img_height" ColumnName="about_us_img_height" />
+                <ScalarProperty Name="about_us_img_alt" ColumnName="about_us_img_alt" />
+                <ScalarProperty Name="about_us_type" ColumnName="about_us_type" />
+                <ScalarProperty Name="about_exp_en_two" ColumnName="about_exp_en_two" />
+                <ScalarProperty Name="about_exp_en_one" ColumnName="about_exp_en_one" />
+                <ScalarProperty Name="about_summery" ColumnName="about_summery" />
+                <ScalarProperty Name="about_lang" ColumnName="about_lang" />
+                <ScalarProperty Name="about_type" ColumnName="about_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_article">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_article">
+              <MappingFragment StoreEntitySet="tbl_article">
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+                <ScalarProperty Name="article_title" ColumnName="article_title" />
+                <ScalarProperty Name="article_date" ColumnName="article_date" />
+                <ScalarProperty Name="article_summery" ColumnName="article_summery" />
+                <ScalarProperty Name="article_img" ColumnName="article_img" />
+                <ScalarProperty Name="article_img_alt" ColumnName="article_img_alt" />
+                <ScalarProperty Name="article_exp" ColumnName="article_exp" />
+                <ScalarProperty Name="article_img_width" ColumnName="article_img_width" />
+                <ScalarProperty Name="article_img_height" ColumnName="article_img_height" />
+                <ScalarProperty Name="article_writer" ColumnName="article_writer" />
+                <ScalarProperty Name="article_visit" ColumnName="article_visit" />
+                <ScalarProperty Name="article_type" ColumnName="article_type" />
+                <ScalarProperty Name="article_img2" ColumnName="article_img2" />
+                <ScalarProperty Name="article_img3" ColumnName="article_img3" />
+                <ScalarProperty Name="article_file" ColumnName="article_file" />
+                <ScalarProperty Name="article_href" ColumnName="article_href" />
+                <ScalarProperty Name="article_code" ColumnName="article_code" />
+                <ScalarProperty Name="article_lang" ColumnName="article_lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_category">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_category">
+              <MappingFragment StoreEntitySet="tbl_category">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="category_parent" ColumnName="category_parent" />
+                <ScalarProperty Name="category_href" ColumnName="category_href" />
+                <ScalarProperty Name="category_title" ColumnName="category_title" />
+                <ScalarProperty Name="category_show_loc" ColumnName="category_show_loc" />
+                <ScalarProperty Name="category_img" ColumnName="category_img" />
+                <ScalarProperty Name="category_title_en" ColumnName="category_title_en" />
+                <ScalarProperty Name="category_href_en" ColumnName="category_href_en" />
+                <ScalarProperty Name="category_type" ColumnName="category_type" />
+                <ScalarProperty Name="category_lang" ColumnName="category_lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_center">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_center">
+              <MappingFragment StoreEntitySet="tbl_center">
+                <ScalarProperty Name="center_id" ColumnName="center_id" />
+                <ScalarProperty Name="center_title" ColumnName="center_title" />
+                <ScalarProperty Name="center_cat" ColumnName="center_cat" />
+                <ScalarProperty Name="center_info" ColumnName="center_info" />
+                <ScalarProperty Name="center_img" ColumnName="center_img" />
+                <ScalarProperty Name="center_city" ColumnName="center_city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_contact">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_contact">
+              <MappingFragment StoreEntitySet="tbl_contact">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_text" ColumnName="user_text" />
+                <ScalarProperty Name="user_subject" ColumnName="user_subject" />
+                <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+                <ScalarProperty Name="user_date" ColumnName="user_date" />
+                <ScalarProperty Name="contact_type" ColumnName="contact_type" />
+                <ScalarProperty Name="user_file" ColumnName="user_file" />
+                <ScalarProperty Name="contact_lang" ColumnName="contact_lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_customer">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_customer">
+              <MappingFragment StoreEntitySet="tbl_customer">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_text" ColumnName="user_text" />
+                <ScalarProperty Name="user_subject" ColumnName="user_subject" />
+                <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+                <ScalarProperty Name="user_date" ColumnName="user_date" />
+                <ScalarProperty Name="user_pp_id" ColumnName="user_pp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_customer_feedback">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_customer_feedback">
+              <MappingFragment StoreEntitySet="tbl_customer_feedback">
+                <ScalarProperty Name="cust_feedback_id" ColumnName="cust_feedback_id" />
+                <ScalarProperty Name="cust_feedback_title" ColumnName="cust_feedback_title" />
+                <ScalarProperty Name="cust_feedback_exp" ColumnName="cust_feedback_exp" />
+                <ScalarProperty Name="cust_feedback_img" ColumnName="cust_feedback_img" />
+                <ScalarProperty Name="cust_company_title" ColumnName="cust_company_title" />
+                <ScalarProperty Name="cust_address" ColumnName="cust_address" />
+                <ScalarProperty Name="cust_feedback_img_width" ColumnName="cust_feedback_img_width" />
+                <ScalarProperty Name="cust_feedback_img_height" ColumnName="cust_feedback_img_height" />
+                <ScalarProperty Name="cust_feedback_project_img" ColumnName="cust_feedback_project_img" />
+                <ScalarProperty Name="cust_feedback_lang" ColumnName="cust_feedback_lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_faq">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_faq">
+              <MappingFragment StoreEntitySet="tbl_faq">
+                <ScalarProperty Name="faq_id" ColumnName="faq_id" />
+                <ScalarProperty Name="faq_question" ColumnName="faq_question" />
+                <ScalarProperty Name="faq_answer" ColumnName="faq_answer" />
+                <ScalarProperty Name="faq_exp" ColumnName="faq_exp" />
+                <ScalarProperty Name="faq_question_en" ColumnName="faq_question_en" />
+                <ScalarProperty Name="faq_answer_en" ColumnName="faq_answer_en" />
+                <ScalarProperty Name="faq_lang" ColumnName="faq_lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_gallery">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_gallery">
+              <MappingFragment StoreEntitySet="tbl_gallery">
+                <ScalarProperty Name="gallery_id" ColumnName="gallery_id" />
+                <ScalarProperty Name="gallery_title" ColumnName="gallery_title" />
+                <ScalarProperty Name="gallery_date" ColumnName="gallery_date" />
+                <ScalarProperty Name="gallery_is_fa" ColumnName="gallery_is_fa" />
+                <ScalarProperty Name="gallery_image" ColumnName="gallery_image" />
+                <ScalarProperty Name="gallery_visit" ColumnName="gallery_visit" />
+                <ScalarProperty Name="gallery_alt" ColumnName="gallery_alt" />
+                <ScalarProperty Name="gallery_img_width" ColumnName="gallery_img_width" />
+                <ScalarProperty Name="gallery_img_height" ColumnName="gallery_img_height" />
+                <ScalarProperty Name="gallery_summery" ColumnName="gallery_summery" />
+                <ScalarProperty Name="gallery_exp" ColumnName="gallery_exp" />
+                <ScalarProperty Name="gallery_summery_en" ColumnName="gallery_summery_en" />
+                <ScalarProperty Name="gallery_exp_en" ColumnName="gallery_exp_en" />
+                <ScalarProperty Name="gallery_cat" ColumnName="gallery_cat" />
+                <ScalarProperty Name="gallery_title_en" ColumnName="gallery_title_en" />
+                <ScalarProperty Name="gallery_lang" ColumnName="gallery_lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_link">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_link">
+              <MappingFragment StoreEntitySet="tbl_link">
+                <ScalarProperty Name="link_id" ColumnName="link_id" />
+                <ScalarProperty Name="link_title" ColumnName="link_title" />
+                <ScalarProperty Name="link_url" ColumnName="link_url" />
+                <ScalarProperty Name="link_img" ColumnName="link_img" />
+                <ScalarProperty Name="link_exp" ColumnName="link_exp" />
+                <ScalarProperty Name="link_status" ColumnName="link_status" />
+                <ScalarProperty Name="link_cat" ColumnName="link_cat" />
+                <ScalarProperty Name="link_title_en" ColumnName="link_title_en" />
+                <ScalarProperty Name="link_exp_en" ColumnName="link_exp_en" />
+                <ScalarProperty Name="link_file" ColumnName="link_file" />
+                <ScalarProperty Name="link_lang" ColumnName="link_lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_news">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_news">
+              <MappingFragment StoreEntitySet="tbl_news">
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="news_title" ColumnName="news_title" />
+                <ScalarProperty Name="news_image" ColumnName="news_image" />
+                <ScalarProperty Name="news_visit" ColumnName="news_visit" />
+                <ScalarProperty Name="news_index" ColumnName="news_index" />
+                <ScalarProperty Name="news_date" ColumnName="news_date" />
+                <ScalarProperty Name="news_category" ColumnName="news_category" />
+                <ScalarProperty Name="news_exp" ColumnName="news_exp" />
+                <ScalarProperty Name="news_summery" ColumnName="news_summery" />
+                <ScalarProperty Name="news_writer" ColumnName="news_writer" />
+                <ScalarProperty Name="news_img_alt" ColumnName="news_img_alt" />
+                <ScalarProperty Name="news_href" ColumnName="news_href" />
+                <ScalarProperty Name="news_code" ColumnName="news_code" />
+                <ScalarProperty Name="news_lang" ColumnName="news_lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_product">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_product">
+              <MappingFragment StoreEntitySet="tbl_product">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_title" ColumnName="product_title" />
+                <ScalarProperty Name="product_img1" ColumnName="product_img1" />
+                <ScalarProperty Name="product_img_alt" ColumnName="product_img_alt" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+                <ScalarProperty Name="product_exp" ColumnName="product_exp" />
+                <ScalarProperty Name="product_summery" ColumnName="product_summery" />
+                <ScalarProperty Name="product_cat" ColumnName="product_cat" />
+                <ScalarProperty Name="product_save" ColumnName="product_save" />
+                <ScalarProperty Name="product_exist" ColumnName="product_exist" />
+                <ScalarProperty Name="product_visit" ColumnName="product_visit" />
+                <ScalarProperty Name="product_img2" ColumnName="product_img2" />
+                <ScalarProperty Name="product_title1" ColumnName="product_title1" />
+                <ScalarProperty Name="product_title2" ColumnName="product_title2" />
+                <ScalarProperty Name="product_parent" ColumnName="product_parent" />
+                <ScalarProperty Name="product_lang" ColumnName="product_lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_slider">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_slider">
+              <MappingFragment StoreEntitySet="tbl_slider">
+                <ScalarProperty Name="slider_id" ColumnName="slider_id" />
+                <ScalarProperty Name="slider_img" ColumnName="slider_img" />
+                <ScalarProperty Name="slider_link" ColumnName="slider_link" />
+                <ScalarProperty Name="slider_sort" ColumnName="slider_sort" />
+                <ScalarProperty Name="slider_title" ColumnName="slider_title" />
+                <ScalarProperty Name="slider_exp" ColumnName="slider_exp" />
+                <ScalarProperty Name="slider_img_alt" ColumnName="slider_img_alt" />
+                <ScalarProperty Name="slider_lang" ColumnName="slider_lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_users">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_users">
+              <MappingFragment StoreEntitySet="tbl_users">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_pass" ColumnName="user_pass" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="user_birthday" ColumnName="user_birthday" />
+                <ScalarProperty Name="user_mobile" ColumnName="user_mobile" />
+                <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+                <ScalarProperty Name="user_province" ColumnName="user_province" />
+                <ScalarProperty Name="user_city" ColumnName="user_city" />
+                <ScalarProperty Name="user_postal_code" ColumnName="user_postal_code" />
+                <ScalarProperty Name="user_addr" ColumnName="user_addr" />
+                <ScalarProperty Name="user_pic" ColumnName="user_pic" />
+                <ScalarProperty Name="user_access" ColumnName="user_access" />
+                <ScalarProperty Name="user_reg_date" ColumnName="user_reg_date" />
+                <ScalarProperty Name="user_is_sex" ColumnName="user_is_sex" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_video">
+            <EntityTypeMapping TypeName="AlstarDbModel.tbl_video">
+              <MappingFragment StoreEntitySet="tbl_video">
+                <ScalarProperty Name="video_id" ColumnName="video_id" />
+                <ScalarProperty Name="video_title" ColumnName="video_title" />
+                <ScalarProperty Name="video_date" ColumnName="video_date" />
+                <ScalarProperty Name="video_href" ColumnName="video_href" />
+                <ScalarProperty Name="video_alt" ColumnName="video_alt" />
+                <ScalarProperty Name="video_code" ColumnName="video_code" />
+                <ScalarProperty Name="video_lang" ColumnName="video_lang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

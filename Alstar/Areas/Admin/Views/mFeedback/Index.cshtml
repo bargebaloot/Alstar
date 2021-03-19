@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Alstar.Models.mFeedback>
+<!-- Content Header (Page header) -->
+<div class="page-content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="">
+                        <button class="btn btn-danger delete" type="submit">
+                            <span class="fa fa-trash"></span>
+                            حذف
+                        </button>
+                        @Html.ActionLink("جدید", "FeedbackGet", "mFeedback", "", new { @class = "btn btn-success" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title"> </h4>
+                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>تصویر </th>
+                                    <th>عنوان</th>
+                                    <th>ویرایش</th>
+                                    <th>حذف</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr id="@item.cust_feedback_id">
+                                    <td>
+                                        <img width="70" height="70" src="~/images/feedback/@item.cust_feedback_img" />
+                                    </td>
+                                    <td>@item.cust_feedback_title</td>
+                                    <td><a href="~/mFeedback/FeedbackGet?pId=@item.cust_feedback_id" class="btn btn-info icon-preview"><i data-toggle="tooltip" data-placement="right" data-original-title="ویرایش" class="fa fa-pencil"> </i></a></td>
+                                    <td><input value="@item.cust_feedback_id" name="radioSelect" type="radio"></td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+</div>
+<!-- /.content -->
+
+@section scripts{
+    <script>
+                $('.delete').click(function (event) {
+                    url = get_current_url();
+                    event.preventDefault();
+                    var r = confirm("آیا از حذف رکورد اطمینان دارید؟");
+                    if (r == true) {
+                        var pIds = $('input[name="radioSelect"]:radio:checked').val();
+                        $.ajax({
+                            url: url + '/RemoveFeedback',
+                            dataType: "json",
+                            data: { "pId": pIds },
+                            type: "POST",
+                            async: "true",
+                            cache: false,
+                            beforeSend: function () {
+                            },
+                            success: function (data) {
+                                $("#" + pIds).remove()
+                            }
+                        });
+                    }
+                });
+                function get_current_url() {
+                    project = window.location.pathname.split('/');
+                    url = window.location.protocol + '//' + window.location.host + '/' + project[1];
+                    return url;
+                }
+    </script>
+}
+
+
+

@@ -1,0 +1,183 @@
+﻿@model Alstar.Models.mAbout
+@{
+    Alstar.Models.database.AlstarDb AlstarDb =
+        new Alstar.Models.database.AlstarDb();
+}
+<div class="page-content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <h4>
+                            درباره ما
+                        </h4>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end page-title-box -->
+            </div>
+        </div>
+        <!-- Content Header (Page header) -->
+        @using (Html.BeginForm("AboutPost", "mAbout", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            if (ViewBag.error != null)
+            {
+                <div class="col-md-8 form-group" style="margin-top:30px;margin-right:3px;">
+                    <div class="alert alert-dismissable alert-danger">
+                        @ViewBag.error
+                    </div>
+                </div>
+            }
+ <!-- Main content -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+                            <form class="" action="#">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.about_us_id, new { @type = "hidden" })
+                                    <div class="form-group">
+                                        <input type="hidden" name="about_us_img" id="about_us_img" value="@Model.about_us_img" />
+                                        <label class="col-sm-2 control-label" for="img_file">تصویر   :</label>
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <img src="~/images/about/@Model.about_us_img" width="70" height="70" />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="file" name="img_file" id="" value="@Model.about_us_img" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="about_us_title">عنوان1 : </label>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(model => model.about_us_title, new { @placeholder = "عنوان", @class = "form-control force" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="about_us_exp_two">2عنوان : </label>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(model => model.about_us_exp_two, new { @placeholder = "عنوان2", @class = "form-control force" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="about_us_img_alt"> متن جایگزین تصویر :</label>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(model => model.about_us_img_alt, new { @placeholder = "متن جایگزین تصویر", @class = "form-control force" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 text-left" for="about_us_type">نوع متن : </label>
+                                        <div class="col-sm-3">
+                                            <select id="about_us_type" name="about_us_type">
+                                                <option @if (Model.about_us_type == 1) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } value="1">
+                                                    تاریخچه
+                                                </option>
+                                                <option @if (Model.about_us_type == 2) { @: selected
+                                                                                                                                                                                                                                  } value="2">
+                                                    چشم انداز
+                                                </option>
+                                                <option @if (Model.about_us_type == 3)
+                                                { @: selected
+                                                                                                                                                                                                                                                                                                                 } value="3">
+                                                درباره مدیریت
+                                                </option>
+                                                <option @if (Model.about_us_type == 4) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } value="4">
+                                                    سوابق کاری و تحصیلی
+                                                </option>
+                                                <option @if (Model.about_us_type == 5) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } value="5">
+                                                    پرورش نماینده
+                                                </option>
+                                                <option @if (Model.about_us_type == 6) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 } value="6">
+                                                    گزارش عملکرد مالی
+                                                </option>
+                                                <option @if (Model.about_us_type == 7) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 } value="7">
+                                                    پرداخت اقساط
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="box-body pad">
+                                            <label class="col-sm-2 control-label" for="about_summery"> شرح1 :</label>
+                                            <div class="col-sm-10">
+                                                <textarea id="about_summery" name="about_summery" rows="10" cols="70">@Model.about_summery</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="box-body pad">
+                                            <label class="col-sm-2 control-label" for="about_us_exp_one"> 2شرح :</label>
+                                            <div class="col-sm-10">
+                                                <textarea id="about_us_exp_one" name="about_us_exp_one" rows="10" cols="70">@Model.about_us_exp_one</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="box-body pad">
+                                            <label class="col-sm-2 control-label" for="about_exp_en_one"> 3شرح :</label>
+                                            <div class="col-sm-10">
+                                                <textarea id="about_exp_en_one" name="about_exp_en_one" rows="10" cols="70">@Model.about_exp_en_one</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-info pull-right sub_validation">ثبت</button>
+                                    </div>
+                                    <!-- /.box-footer -->
+                            </form>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div>
+        <!-- /.content -->
+        }
+    </div>
+</div>
+<script src="~/panel/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="~/panel/bower_components/ckeditor/ckeditor.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<!--<script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>-->
+<!-- TinyMCE Editor -->
+<script src="~/panel/bower_components/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea#mytextarea',
+        plugins: 'advlist autolink link lists preview table code pagebreak',
+        menubar: false,
+        language: 'fa',
+        height: 300,
+        relative_urls: false,
+        toolbar: 'undo redo | removeformat preview code | fontsizeselect bullist numlist | alignleft aligncenter alignright alignjustify | bold italic | pagebreak table link',
+    });
+    $(function () {
+        CKEDITOR.replace('about_summery')
+        $('.textarea').wysihtml5()
+    })
+    $(function () {
+        CKEDITOR.replace('about_us_exp_one')
+        $('.textarea').wysihtml5()
+    })
+    $(function () {
+        CKEDITOR.replace('about_exp_en_one')
+        $('.textarea').wysihtml5()
+    })
+    $(function () {
+        CKEDITOR.replace('about_summery_en')
+        $('.textarea').wysihtml5()
+    })
+</script>

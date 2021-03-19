@@ -1,0 +1,168 @@
+﻿@model Alstar.Models.mGallery
+@{
+    Alstar.Models.database.AlstarDb AlstarDb = new Alstar.Models.database.AlstarDb();
+}
+<div class="page-content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <h4>
+                            تصاویر
+                        </h4>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end page-title-box -->
+            </div>
+        </div>
+        @using (Html.BeginForm("GalleryPost", "mGallery", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            if (ViewBag.error != null)
+            {
+                <div class="col-md-8 form-group" style="margin-top:30px;margin-right:3px;">
+                    <div class="alert alert-dismissable alert-danger">
+                        @ViewBag.error
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+
+                            <form class="" action="#">
+                                <div class="box-body">
+                                    @Html.TextBoxFor(model => model.gallery_id, new { @type = "hidden" })
+                                    <div class="form-group">
+                                        <input type="hidden" name="gallery_image" id="gallery_image" value="@Model.gallery_image" />
+                                        <label class="col-sm-2 control-label" for="img_file">تصویر   :</label>
+                                        <div class="col-sm-2">
+                                            <img src="~/images/gallery/@Model.gallery_image" width="70" height="70" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="file" name="img_file" id="" value="@Model.gallery_image" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="gallery_title">عنوان : </label>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(model => model.gallery_title, new { @placeholder = "عنوان", @class = "form-control force" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 text-left" for="link_status">انتخاب نوع : </label>
+                                        <div class="col-sm-3">
+                                            <select id="gallery_cat" name="gallery_cat">
+                                                <option value="1" @if (Model.gallery_cat == 1) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                            }>
+                                                    رزومه تصویری افتخارات
+                                                </option>
+                                                <option value="2" @if (Model.gallery_cat == 2) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                            }>
+                                                    رویدادهای تصویری
+                                                </option>
+                                                <option value="3" @if (Model.gallery_cat == 3) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                                                                                            }>
+                                                    تصاویر مدیریت
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="gallery_is_fa">دسته بندی :</label>
+                                        <div class="col-sm-6">
+                                            <select id="gallery_is_fa" name="gallery_is_fa">
+                                                @{
+                                                    var vPrd = (from a in KarafarinDb.tbl_category
+                                                                where (a.category_type == 3)
+                                                                select a).OrderBy(b => b.category_id).ToList();
+
+                                                }
+                                                @foreach (var item in vPrd)
+                                                {
+                                                    <option value="@item.category_id"
+                                                            @if (Model.gallery_cat == item.category_type) { @: selected
+                                                                                                                                                                                                                                                                                                                                   }>
+                                                        @item.category_title
+                                                    </option>
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="gallery_date"> تاریخ :</label>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(model => model.gallery_date, new { @placeholder = "تاریخ", @class = "form-control force" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="gallery_alt"> متن جایگزین تصویر :</label>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(model => model.gallery_alt, new { @placeholder = "متن جایگزین تصویر", @class = "form-control force" })
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                            <div class="box-body pad">
+                                                <label class="col-sm-2 control-label" for="gallery_summery"> خلاصه  :</label>
+                                                <div class="col-sm-10">
+                                                    <textarea id="gallery_summery" name="gallery_summery" rows="10" cols="70">@Model.gallery_summery</textarea>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                    <div class="form-group">
+                                        <div class="box-body pad">
+                                            <label class="col-sm-2 control-label" for="gallery_exp">  شرح :</label>
+                                            <div class="col-sm-10">
+                                                <textarea id="gallery_exp" name="gallery_exp" rows="10" cols="70">@Model.gallery_exp</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-info pull-right sub_validation">ثبت</button>
+                                </div>
+                                <!-- /.box-footer -->
+                            </form>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div>
+        <!-- /.content -->
+                                                    }
+    </div>
+        </div>
+        <script src="~/panel/bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="~/panel/bower_components/ckeditor/ckeditor.js"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <!--<script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>-->
+        <!-- TinyMCE Editor -->
+        <script src="~/panel/bower_components/tinymce/tinymce.min.js"></script>
+        <script>
+            tinymce.init({
+                selector: 'textarea#mytextarea',
+                plugins: 'advlist autolink link lists preview table code pagebreak',
+                menubar: false,
+                language: 'fa',
+                height: 300,
+                relative_urls: false,
+                toolbar: 'undo redo | removeformat preview code | fontsizeselect bullist numlist | alignleft aligncenter alignright alignjustify | bold italic | pagebreak table link',
+            });
+            $(function () {
+                CKEDITOR.replace('gallery_summery')
+                $('.textarea').wysihtml5()
+            })
+            $(function () {
+                CKEDITOR.replace('gallery_exp')
+                $('.textarea').wysihtml5()
+            })
+        </script>

@@ -1,0 +1,67 @@
+﻿@{
+    Alstar.Models.database.AlstarDb AlstarDb = new Alstar.Models.database.AlstarDb();
+    Alstar.da.daArticle c = new Alstar.da.daArticle();
+    int vType = 0;
+}
+<!-- Main content -->
+<div class="row">
+    <div class="col-12">
+        <div class="card m-b-30">
+            <div class="card-body">
+                <h4 class="mt-0 header-title"> </h4>
+                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>تصویر </th>
+                            <th>عنوان</th>
+                            <th>ویرایش</th>
+                            <th>حذف</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                            {
+                                vType = item.article_type;
+                            <tr id="@item.article_id">
+                                <td>
+                                    <img width="70" height="70" src="~/images/articles/@item.article_img" />
+                                </td>
+                                <td>@item.article_title</td>
+
+                                <td><a href="~/mArticle/ArticleGet?pId=@item.article_id" class="btn btn-info icon-preview"><i data-toggle="tooltip" data-placement="right" data-original-title="ویرایش" class="dripicons-pencil"> </i></a></td>
+                                <td><input value="@item.article_id" name="radioSelect" type="radio"></td>
+                            </tr>
+                            }
+                    </tbody>
+                </table>
+
+                @{
+                    decimal vCount = (from a in AlstarDb.tbl_article
+                                      where a.article_type == vType
+                                      select a).Count();
+                    decimal vPage = vCount / 15;
+                }
+                <div class="col-12" dir="rtl">
+                    <div class="pagination-wrap text-center">
+                        <ul>
+                            @if (c.IsDecimal(vPage))
+                                {
+                                    vPage++;
+                                }
+                            @for (int i = 1; i <= vPage; i++)
+                                {
+                                <li><a href="~/mArticle/fGetPage?pPageNum=@i&pAction=Index&pType=@vType">@i</a></li>
+                                }
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+ 

@@ -1,0 +1,148 @@
+﻿@model Alstar.Models.mUser
+<div class="page-content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <h4>
+                            ویرایش کاربر
+                        </h4>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end page-title-box -->
+            </div>
+        </div>
+        @using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+          <div class="row">
+                <div class="col-lg-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+                            <div class="col-md-8 form-group" style="margin-top:30px;margin-right:3px;">
+                                <div class="alert alert-dismissable alert-info">
+                                    تکمیل تمامی فیلد ها جهت ارسال الزامی می باشد
+                                </div>
+                            </div>
+                            @if (ViewBag.error != null)
+                            {
+                            <div class="col-md-8 form-group" style="margin-right:3px;">
+                                <div class="alert alert-dismissable alert-danger">
+                                    @ViewBag.error
+                                </div>
+                            </div>
+                            }
+                            <!-- form start -->
+                            <form class="" action="#">
+                                <div class="box-body">
+                                    @Html.TextBoxFor(model => model.user_id, new { @type = "hidden" })
+                                    <div class="form-group">
+                                        <label for="user_name" class="col-sm-3 control-label">نام</label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(model => model.first_name, new { @placeholder = "نام", @class = "form-control force" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_name" class="col-sm-3 control-label">نام خانوادگی</label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(model => model.last_name, new { @placeholder = "نام خانوادگی", @class = "form-control force" })
+                                        </div>
+                                    </div>
+                                    @*<div class="form-group">
+                                            <label for="user_name" class="col-sm-3 control-label">نام کاربری</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextBoxFor(model => model.user_name, new { @placeholder = "نام کاربری", @class = "form-control force" })
+                                            </div>
+                                        </div>*@
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="user_email">ایمیل</label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(model => model.user_email, new { @placeholder = "ایمیل", @class = "form-control force" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="user_phone">شماره تماس</label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(model => model.user_phone, new { @placeholder = "شماره تماس", @class = "form-control force" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="user_pass">رمز عبور</label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(model => model.user_pass, new { @placeholder = "رمز عبور", @class = "form-control force" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-info pull-right sub_validation">ارسال</button>
+                                </div>
+                                <!-- /.box-footer -->
+                            </form>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div>
+
+                            }
+                        </div>
+                            </div>
+                            @section scripts{
+                                <script src="~/panel/bower_components/jquery/dist/jquery.min.js"></script>
+                                <!-- Bootstrap 3.3.7 -->
+                                <script src="~/panel/bower_components/ckeditor/ckeditor.js"></script>
+                                <!-- Bootstrap WYSIHTML5 -->
+                                <!--<script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>-->
+                                <!-- TinyMCE Editor -->
+                                <script src="~/panel/bower_components/tinymce/tinymce.min.js"></script>
+                                <script>
+                                    tinymce.init({
+                                        selector: 'textarea#mytextarea',
+                                        plugins: 'advlist autolink link lists preview table code pagebreak',
+                                        menubar: false,
+                                        language: 'fa',
+                                        height: 300,
+                                        relative_urls: false,
+                                        toolbar: 'undo redo | removeformat preview code | fontsizeselect bullist numlist | alignleft aligncenter alignright alignjustify | bold italic | pagebreak table link',
+                                    });
+                                    $(function () {
+                                        CKEDITOR.replace('user_addr')
+                                        $('.textarea').wysihtml5()
+                                    })
+                                </script>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('input[name="user_email"]').blur(function () {
+                                            email = $(this).val()
+                                            id = $("#user_id").val();
+                                            alert(id)
+                                            $.ajax({
+                                                url: '/Admin/checkAdminuserExists',
+                                                dataType: "json",
+                                                data: { "pEmail": email, "pId": id },
+                                                type: "POST", cache: false,
+                                                async: true,
+                                                success: function (data) {
+                                                    if (data == true)
+                                                        $('#chkuser').text("ایمیل از قبل انتخاب شده است!");
+                                                    else
+                                                        $('#chkuser').text("");
+                                                }
+                                            });
+
+                                        });
+                                    });
+
+                                    function get_current_url() {
+                                        project = window.location.pathname.split('/');
+                                        // url=window.location.protocol+'//'+window.location.host+'/'+project[1]+'/'+project[2]+'/'+project[3];
+                                        url = window.location.protocol + '//' + window.location.host + '/' + project[1] + '/' + project[2];
+                                        return url;
+                                    }
+
+                                </script>
+                            }

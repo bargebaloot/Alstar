@@ -1,0 +1,120 @@
+﻿@model Alstar.Models.mCategory
+@{
+    Alstar.Models.database.AlstarDb AlstarDb = new Alstar.Models.database.AlstarDb();
+}
+<div class="page-content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <h4>
+                            ویرایش مجموعه ها
+                        </h4>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end page-title-box -->
+            </div>
+        </div>
+        <!-- Content Header (Page header) -->
+        @using (Html.BeginForm("CategoryPost", "mCategory", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            if (ViewBag.error != null)
+            {
+                <div class="col-md-8 form-group" style="margin-top:30px;margin-right:3px;">
+                    <div class="alert alert-dismissable alert-danger">
+                        @ViewBag.error
+                    </div>
+                </div>
+            }
+       <!-- end page title -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+
+                            <form class="" action="#">
+                                <div class="box-body">
+                                    @Html.TextBoxFor(model => model.category_id, new { @type = "hidden" })
+                                    @Html.TextBoxFor(model => model.category_show_loc, new { @type = "hidden" })
+                                    <div class="form-group">
+                                        <input type="hidden" name="category_img" id="category_img" value="@Model.category_img" />
+                                        <label class="col-sm-2 control-label" for="img_file">تصویر   :</label>
+                                        <div class="col-sm-2">
+                                            <img src="~/images/category/@Model.category_img" width="70" height="70" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="file" name="img_file" id="" value="@Model.category_img" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="category_title">عنوان : </label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(model => model.category_title, new { @placeholder = "عنوان", @class = "form-control force" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="category_href">نشانی : </label>
+                                        <div class="col-sm-9">
+                                            @Html.TextBoxFor(model => model.category_href, new { @placeholder = "نشانی ", @class = "form-control force" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="category_parent">(منو)والد : </label>
+                                        <div class="col-sm-6">
+                                            <select name="category_parent" id="category_parent">
+                                                <option value="0">-</option>
+                                                @{
+                                 foreach (var vCat in AlstarDb.tbl_category)
+                                                    {
+
+                                                <option value="@vCat.category_id" @if (Model.category_parent == vCat.category_id) { @: selected
+                                                                                                                                                                                                                                                                                    }>
+                                                    @vCat.category_title
+                                                </option>
+
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="category_type">دسته بندی : </label>
+                                        <div class="col-sm-6">
+                                            <select name="category_type" id="category_type">
+                                                <option @if (Model.category_type == 1) { @: selected
+                                                                                                                                                                                                                                                                    } value="1">
+                                                    منو
+                                                </option>
+                                                <option @if (Model.category_type == 2) { @: selected
+                                                                                                                                                                                                                                                                                                                    } value="2">
+                                                    مراکز طرف قرارداد
+                                                </option>
+                                                <option @if (Model.category_type == 3) { @: selected
+                                                                                                                                                                                                                                                                                                                                                                    } value="3">
+                                                    رویدادهای تصویری
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-info pull-right sub_validation">ثبت</button>
+                                </div>
+                                <!-- /.box-footer -->
+                            </form>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div>
+        <!-- /.content -->
+                                                    }
+    </div> 
+       </div>

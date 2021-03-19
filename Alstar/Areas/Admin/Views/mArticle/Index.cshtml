@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Alstar.Models.mArticle>
+@{
+    ViewBag.Title = "فهرست مقالات";
+    Alstar.Models.database.AlstarDb AlstarDb = new Alstar.Models.database.AlstarDb();
+    Alstar.da.daArticle c = new Alstar.da.daArticle();
+    decimal vCount;
+    decimal vPage;
+    int? pArticleType = 0;
+}
+@{
+    if (ViewBag.IsSearch != null)
+    {
+        foreach (var item in Model)
+        {
+            pArticleType = item.article_type;
+            continue;
+        }
+    }
+}
+<!-- Content Header (Page header) -->
+<div class="page-content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <button class="btn btn-danger delete" type="submit">
+                        <span class="fa fa-trash"></span>
+                        حذف
+                    </button>
+                    @Html.ActionLink("جدید", "ArticleGet", "mArticle", new { @pType = ViewBag.pId }, new { @class = "btn btn-success" })
+                </div>
+            </div>
+        </div>
+        <div id="panel-content-link">
+            @Html.Partial("_Index")
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+                $('.delete').click(function (event) {
+                    url = get_current_url();
+                    event.preventDefault();
+                    var r = confirm("آیا از حذف رکورد اطمینان دارید؟");
+                    if (r == true) {
+                        var pIds = $('input[name="radioSelect"]:radio:checked').val();
+                        $.ajax({
+                            url: url + '/RemoveArticles',
+                            dataType: "json",
+                            data: { "pId": pIds },
+                            type: "POST",
+                            async: "true",
+                            cache: false,
+                            beforeSend: function () {
+                            },
+                            success: function (data) {
+                                $("#" + pIds).remove()
+                            }
+                        });
+                    }
+                });
+                function get_current_url() {
+                    project = window.location.pathname.split('/');
+                    url = window.location.protocol + '//' + window.location.host + '/' + project[1];
+                    return url;
+                }
+                $("body").on("change", "#article_type", function () {
+                    vArticle = $("#article_type").val()
+                    pData = { article_type: vArticle }
+                    $.ajax({
+                        url: vUrl + "mArticle" + "/" + "Index",
+                        type: "POST",
+                        contentType: 'application/json',
+                        data: JSON.stringify(pData),
+                        cache: false,
+                        async: false,
+                        beforeSend: function () {
+                            $('span.psd-loader').css('display', 'block')
+                        },
+                        success: function (data) {
+                            $('span.psd-loader').css('display', 'none')
+                            vPartial = data
+                        },
+                        error: function (errormessage) {
+                            alert(errormessage)
+                            $('span.psd-loader').css('display', 'none')
+                        }
+                    });
+                    $("#panel-content-link").html(vPartial)
+
+                });
+    </script>
+}
+
+
+
