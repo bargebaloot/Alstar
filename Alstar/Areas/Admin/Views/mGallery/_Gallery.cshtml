@@ -75,7 +75,7 @@
                                         <div class="col-sm-6">
                                             <select id="gallery_is_fa" name="gallery_is_fa">
                                                 @{
-                                                    var vPrd = (from a in KarafarinDb.tbl_category
+                                                    var vPrd = (from a in AlstarDb.tbl_category
                                                                 where (a.category_type == 3)
                                                                 select a).OrderBy(b => b.category_id).ToList();
 

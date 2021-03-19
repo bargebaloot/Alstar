@@ -54,17 +54,17 @@ namespace Alstar.Areas.Admin.Controllers
                 ViewBag.Message = "شما وارد سایت نشده اید...";
                 return RedirectToAction("LoginForm", "Login");
             }
-            mProduct vInsurance = new mProduct();
+            mProduct vProduct = new mProduct();
             if (pId > 0)
             {
-                vInsurance.product_id = pId;
-                vInsurance = p.fGetIns(vInsurance);
+                vProduct.product_id = pId;
+                vProduct = p.fGetIns(vProduct);
             }
             else
             {
-                vInsurance = new mProduct();
+                vProduct = new mProduct();
             }
-            return View("_Insurance",vInsurance);
+            return View("_Insurance",vProduct);
         }
 
         [HttpPost, ValidateInput(false)]

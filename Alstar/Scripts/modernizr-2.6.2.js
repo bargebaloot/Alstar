@@ -328,9 +328,9 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
     /**
-     * contains returns a boolean for if substr is found within str.
+     * contaIns returns a boolean for if substr is found within str.
      */
-    function contains( str, substr ) {
+    function contaIns( str, substr ) {
         return !!~('' + str).indexOf(substr);
     }
 
@@ -357,7 +357,7 @@ window.Modernizr = (function( window, document, undefined ) {
     function testProps( props, prefixed ) {
         for ( var i in props ) {
             var prop = props[i];
-            if ( !contains(prop, "-") && mStyle[prop] !== undefined ) {
+            if ( !contaIns(prop, "-") && mStyle[prop] !== undefined ) {
                 return prefixed == 'pfx' ? prop : true;
             }
         }
@@ -393,7 +393,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     /*>>testallprops*/
     /**
-     * testPropsAll tests a list of DOM properties we want to check against.
+     * testPropsAll tests a list of DOM properties we want to check agaInst.
      *   We specify literally ALL possible (known and/or likely) properties on
      *   the element including the non-vendor prefixed one, for forward-
      *   compatibility.
@@ -555,16 +555,16 @@ window.Modernizr = (function( window, document, undefined ) {
 
         setCss('background-color:rgba(150,255,150,.5)');
 
-        return contains(mStyle.backgroundColor, 'rgba');
+        return contaIns(mStyle.backgroundColor, 'rgba');
     };
 
     tests['hsla'] = function() {
         // Same as rgba(), in fact, browsers re-map hsla() to rgba() internally,
-        //   except IE9 who retains it as hsla
+        //   except IE9 who retaIns it as hsla
 
         setCss('background-color:hsla(120,40%,100%,.5)');
 
-        return contains(mStyle.backgroundColor, 'rgba') || contains(mStyle.backgroundColor, 'hsla');
+        return contaIns(mStyle.backgroundColor, 'rgba') || contaIns(mStyle.backgroundColor, 'hsla');
     };
 
     tests['multiplebgs'] = function() {
@@ -659,7 +659,7 @@ window.Modernizr = (function( window, document, undefined ) {
               prefixes.join(str3 + str1)).slice(0, -str1.length)
         );
 
-        return contains(mStyle.backgroundImage, 'gradient');
+        return contaIns(mStyle.backgroundImage, 'gradient');
     };
 
 
@@ -1320,7 +1320,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // Assign private properties to the return object with prefix
     Modernizr._version      = version;
 
-    // expose these for the plugin API. Look in the source for how to join() them against your input
+    // expose these for the plugin API. Look in the source for how to join() them agaInst your input
     /*>>prefixes*/
     Modernizr._prefixes     = prefixes;
     /*>>prefixes*/
@@ -1330,10 +1330,10 @@ window.Modernizr = (function( window, document, undefined ) {
     /*>>domprefixes*/
 
     /*>>mq*/
-    // Modernizr.mq tests a given media query, live against the current state of the window
+    // Modernizr.mq tests a given media query, live agaInst the current state of the window
     // A few important notes:
     //   * If a browser does not support media queries at all (eg. oldIE) the mq() will always return false
-    //   * A max-width or orientation query will be evaluated against the current state, which may change later.
+    //   * A max-width or orientation query will be evaluated agaInst the current state, which may change later.
     //   * You must specify values. Eg. If you are testing support for the min-width media query use:
     //       Modernizr.mq('(min-width:0)')
     // usage:

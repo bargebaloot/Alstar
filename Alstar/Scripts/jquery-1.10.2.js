@@ -29,7 +29,7 @@
 
 // Can't do this because several apps including ASP.NET trace
 // the stack via arguments.caller.callee and Firefox dies if
-// you try to trace through "use strict" call chains. (#13335)
+// you try to trace through "use strict" call chaIns. (#13335)
 // Support: Firefox 18+
 //"use strict";
 var
@@ -870,7 +870,7 @@ jQuery.extend({
 			}
 
 			if ( bulk ) {
-				// Bulk operations run against the entire set
+				// Bulk operations run agaInst the entire set
 				if ( raw ) {
 					fn.call( elems, value );
 					fn = null;
@@ -1043,7 +1043,7 @@ var i,
 	rbuggyQSA,
 	rbuggyMatches,
 	matches,
-	contains,
+	contaIns,
 
 	// Instance-specific data
 	expando = "sizzle" + -(new Date()),
@@ -1237,7 +1237,7 @@ function Sizzle( selector, context, results, seed ) {
 				} else {
 					// Context is not a document
 					if ( context.ownerDocument && (elem = context.ownerDocument.getElementById( m )) &&
-						contains( context, elem ) && elem.id === m ) {
+						contaIns( context, elem ) && elem.id === m ) {
 						results.push( elem );
 						return results;
 					}
@@ -1675,19 +1675,19 @@ setDocument = Sizzle.setDocument = function( node ) {
 	rbuggyQSA = rbuggyQSA.length && new RegExp( rbuggyQSA.join("|") );
 	rbuggyMatches = rbuggyMatches.length && new RegExp( rbuggyMatches.join("|") );
 
-	/* Contains
+	/* ContaIns
 	---------------------------------------------------------------------- */
 
-	// Element contains another
+	// Element contaIns another
 	// Purposefully does not implement inclusive descendent
 	// As in, an element does not contain itself
-	contains = rnative.test( docElem.contains ) || docElem.compareDocumentPosition ?
+	contaIns = rnative.test( docElem.contaIns ) || docElem.compareDocumentPosition ?
 		function( a, b ) {
 			var adown = a.nodeType === 9 ? a.documentElement : a,
 				bup = b && b.parentNode;
 			return a === bup || !!( bup && bup.nodeType === 1 && (
-				adown.contains ?
-					adown.contains( bup ) :
+				adown.contaIns ?
+					adown.contaIns( bup ) :
 					a.compareDocumentPosition && a.compareDocumentPosition( bup ) & 16
 			));
 		} :
@@ -1723,10 +1723,10 @@ setDocument = Sizzle.setDocument = function( node ) {
 				(!support.sortDetached && b.compareDocumentPosition( a ) === compare) ) {
 
 				// Choose the first element that is related to our preferred document
-				if ( a === doc || contains(preferredDoc, a) ) {
+				if ( a === doc || contaIns(preferredDoc, a) ) {
 					return -1;
 				}
-				if ( b === doc || contains(preferredDoc, b) ) {
+				if ( b === doc || contaIns(preferredDoc, b) ) {
 					return 1;
 				}
 
@@ -1831,12 +1831,12 @@ Sizzle.matchesSelector = function( elem, expr ) {
 	return Sizzle( expr, document, null, [elem] ).length > 0;
 };
 
-Sizzle.contains = function( context, elem ) {
+Sizzle.contaIns = function( context, elem ) {
 	// Set document vars if needed
 	if ( ( context.ownerDocument || context ) !== document ) {
 		setDocument( context );
 	}
-	return contains( context, elem );
+	return contaIns( context, elem );
 };
 
 Sizzle.attr = function( elem, name ) {
@@ -2150,7 +2150,7 @@ Expr = Sizzle.selectors = {
 							}
 						}
 
-						// Incorporate the offset, then check against cycle size
+						// Incorporate the offset, then check agaInst cycle size
 						diff -= last;
 						return diff === first || ( diff % first === 0 && diff / first >= 0 );
 					}
@@ -2231,7 +2231,7 @@ Expr = Sizzle.selectors = {
 			};
 		}),
 
-		"contains": markFunction(function( text ) {
+		"contaIns": markFunction(function( text ) {
 			return function( elem ) {
 				return ( elem.textContent || elem.innerText || getText( elem ) ).indexOf( text ) > -1;
 			};
@@ -2241,7 +2241,7 @@ Expr = Sizzle.selectors = {
 		// is based solely on the element's language value
 		// being equal to the identifier C,
 		// or beginning with the identifier C immediately followed by "-".
-		// The matching of C against the element's language value is performed case-insensitively.
+		// The matching of C agaInst the element's language value is performed case-insensitively.
 		// The identifier C does not have to be a valid language name."
 		// http://www.w3.org/TR/selectors/#lang-pseudo
 		"lang": markFunction( function( lang ) {
@@ -2492,7 +2492,7 @@ function addCombinator( matcher, combinator, base ) {
 		doneName = done++;
 
 	return combinator.first ?
-		// Check against closest ancestor/preceding element
+		// Check agaInst closest ancestor/preceding element
 		function( elem, context, xml ) {
 			while ( (elem = elem[ dir ]) ) {
 				if ( elem.nodeType === 1 || checkNonElements ) {
@@ -2501,7 +2501,7 @@ function addCombinator( matcher, combinator, base ) {
 			}
 		} :
 
-		// Check against all ancestor/preceding elements
+		// Check agaInst all ancestor/preceding elements
 		function( elem, context, xml ) {
 			var data, cache, outerCache,
 				dirkey = dirruns + " " + doneName;
@@ -2929,7 +2929,7 @@ support.sortStable = expando.split("").sort( sortOrder ).join("") === expando;
 // Always assume duplicates if they aren't passed to the comparison function
 support.detectDuplicates = hasDuplicate;
 
-// Initialize against the default document
+// Initialize agaInst the default document
 setDocument();
 
 // Support: Webkit<537.32 - Safari 6.0.3/Chrome 25 (fixed in Chrome 27)
@@ -2988,7 +2988,7 @@ jQuery.expr[":"] = jQuery.expr.pseudos;
 jQuery.unique = Sizzle.uniqueSort;
 jQuery.text = Sizzle.getText;
 jQuery.isXMLDoc = Sizzle.isXML;
-jQuery.contains = Sizzle.contains;
+jQuery.contaIns = Sizzle.contaIns;
 
 
 })( window );
@@ -3428,7 +3428,7 @@ jQuery.support = (function( support ) {
 	input.setAttribute( "value", "" );
 	support.input = input.getAttribute( "value" ) === "";
 
-	// Check if an input maintains its value after becoming a radio
+	// Check if an input maintaIns its value after becoming a radio
 	input.value = "t";
 	input.setAttribute( "type", "radio" );
 	support.radioValue = input.value === "t";
@@ -5469,7 +5469,7 @@ jQuery.each({
 
 			// For mousenter/leave call the handler if related is outside the target.
 			// NB: No relatedTarget if the mouse left/entered the browser window
-			if ( !related || (related !== target && !jQuery.contains( target, related )) ) {
+			if ( !related || (related !== target && !jQuery.contaIns( target, related )) ) {
 				event.type = handleObj.origType;
 				ret = handleObj.handler.apply( this, arguments );
 				event.type = fix;
@@ -5654,7 +5654,7 @@ jQuery.fn.extend({
 		if ( one === 1 ) {
 			origFn = fn;
 			fn = function( event ) {
-				// Can use an empty set, since event contains the info
+				// Can use an empty set, since event contaIns the info
 				jQuery().off( event );
 				return origFn.apply( this, arguments );
 			};
@@ -5733,7 +5733,7 @@ jQuery.fn.extend({
 		if ( typeof selector !== "string" ) {
 			return this.pushStack( jQuery( selector ).filter(function() {
 				for ( i = 0; i < len; i++ ) {
-					if ( jQuery.contains( self[ i ], this ) ) {
+					if ( jQuery.contaIns( self[ i ], this ) ) {
 						return true;
 					}
 				}
@@ -5757,7 +5757,7 @@ jQuery.fn.extend({
 
 		return this.filter(function() {
 			for ( i = 0; i < len; i++ ) {
-				if ( jQuery.contains( this, targets[i] ) ) {
+				if ( jQuery.contaIns( this, targets[i] ) ) {
 					return true;
 				}
 			}
@@ -6104,7 +6104,7 @@ jQuery.fn.extend({
 			}
 
 			if ( elem.parentNode ) {
-				if ( keepData && jQuery.contains( elem.ownerDocument, elem ) ) {
+				if ( keepData && jQuery.contaIns( elem.ownerDocument, elem ) ) {
 					setGlobalEval( getAll( elem, "script" ) );
 				}
 				elem.parentNode.removeChild( elem );
@@ -6286,7 +6286,7 @@ jQuery.fn.extend({
 					for ( i = 0; i < hasScripts; i++ ) {
 						node = scripts[ i ];
 						if ( rscriptType.test( node.type || "" ) &&
-							!jQuery._data( node, "globalEval" ) && jQuery.contains( doc, node ) ) {
+							!jQuery._data( node, "globalEval" ) && jQuery.contaIns( doc, node ) ) {
 
 							if ( node.src ) {
 								// Hope ajax is available...
@@ -6495,7 +6495,7 @@ function fixDefaultChecked( elem ) {
 jQuery.extend({
 	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
 		var destElements, node, clone, i, srcElements,
-			inPage = jQuery.contains( elem.ownerDocument, elem );
+			inPage = jQuery.contaIns( elem.ownerDocument, elem );
 
 		if ( jQuery.support.html5Clone || jQuery.isXMLDoc(elem) || !rnoshimcache.test( "<" + elem.nodeName + ">" ) ) {
 			clone = elem.cloneNode( true );
@@ -6549,7 +6549,7 @@ jQuery.extend({
 	},
 
 	buildFragment: function( elems, context, scripts, selection ) {
-		var j, elem, contains,
+		var j, elem, contaIns,
 			tmp, tag, tbody, wrap,
 			l = elems.length,
 
@@ -6649,13 +6649,13 @@ jQuery.extend({
 				continue;
 			}
 
-			contains = jQuery.contains( elem.ownerDocument, elem );
+			contaIns = jQuery.contaIns( elem.ownerDocument, elem );
 
 			// Append to fragment
 			tmp = getAll( safe.appendChild( elem ), "script" );
 
 			// Preserve script evaluation history
-			if ( contains ) {
+			if ( contaIns ) {
 				setGlobalEval( tmp );
 			}
 
@@ -6854,7 +6854,7 @@ function isHidden( elem, el ) {
 	// isHidden might be called from jQuery#filter function;
 	// in that case, element will be second argument
 	elem = el || elem;
-	return jQuery.css( elem, "display" ) === "none" || !jQuery.contains( elem.ownerDocument, elem );
+	return jQuery.css( elem, "display" ) === "none" || !jQuery.contaIns( elem.ownerDocument, elem );
 }
 
 function showHide( elements, show ) {
@@ -7109,14 +7109,14 @@ if ( window.getComputedStyle ) {
 
 		if ( computed ) {
 
-			if ( ret === "" && !jQuery.contains( elem.ownerDocument, elem ) ) {
+			if ( ret === "" && !jQuery.contaIns( elem.ownerDocument, elem ) ) {
 				ret = jQuery.style( elem, name );
 			}
 
 			// A tribute to the "awesome hack by Dean Edwards"
 			// Chrome < 17 and Safari 5.0 uses "computed value" instead of "used value" for margin-right
 			// Safari 5.1.7 (at least) returns percentage for a larger set of values, but width seems to be reliably pixels
-			// this is against the CSSOM draft spec: http://dev.w3.org/csswg/cssom/#resolved-values
+			// this is agaInst the CSSOM draft spec: http://dev.w3.org/csswg/cssom/#resolved-values
 			if ( rnumnonpx.test( ret ) && rmargin.test( name ) ) {
 
 				// Remember the original values
@@ -7189,7 +7189,7 @@ if ( window.getComputedStyle ) {
 function setPositiveNumber( elem, value, subtract ) {
 	var matches = rnumsplit.exec( value );
 	return matches ?
-		// Guard against undefined "subtract", e.g., when used as in cssHooks
+		// Guard agaInst undefined "subtract", e.g., when used as in cssHooks
 		Math.max( 0, matches[ 1 ] - ( subtract || 0 ) ) + ( matches[ 2 ] || "px" ) :
 		value;
 }
@@ -9578,7 +9578,7 @@ jQuery.fn.offset = function( options ) {
 	docElem = doc.documentElement;
 
 	// Make sure it's not a disconnected DOM node
-	if ( !jQuery.contains( docElem, elem ) ) {
+	if ( !jQuery.contaIns( docElem, elem ) ) {
 		return box;
 	}
 

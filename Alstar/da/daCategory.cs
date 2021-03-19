@@ -181,7 +181,7 @@ namespace Alstar.da
         public bool IsDecimal(decimal pNum)
         {
             string pNumStr = pNum.ToString();
-            if (pNumStr.Contains('.'))
+            if (pNumStr.ContaIns('.'))
             {
                 return true;
             }

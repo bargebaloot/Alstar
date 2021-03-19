@@ -241,8 +241,8 @@ namespace Alstar.da
             {
                 mHome pHome = new mHome();
                 var vNews = (from n in Db.tbl_news
-                             where n.news_title.Contains(pSearch) || n.news_summery.Contains(pSearch)
-                             || n.news_exp.Contains(pSearch) 
+                             where n.news_title.ContaIns(pSearch) || n.news_summery.ContaIns(pSearch)
+                             || n.news_exp.ContaIns(pSearch) 
                              select new mNews
                              {
                                  news_id = n.news_id,
@@ -260,9 +260,9 @@ namespace Alstar.da
 
 
                 var vArticle = (from n in Db.tbl_article
-                             where n.article_title.Contains(pSearch) 
-                             || n.article_summery.Contains(pSearch) 
-                             || n.article_exp.Contains(pSearch) 
+                             where n.article_title.ContaIns(pSearch) 
+                             || n.article_summery.ContaIns(pSearch) 
+                             || n.article_exp.ContaIns(pSearch) 
                              select new mArticle
                              {
                                  article_id = n.article_id,
@@ -279,7 +279,7 @@ namespace Alstar.da
                 pHome.aArticles = vArticle.ToList();
 
                 var vLink = (from n in Db.tbl_link
-                             where n.link_title.Contains(pSearch) || n.link_title_en.Contains(pSearch)
+                             where n.link_title.ContaIns(pSearch) || n.link_title_en.ContaIns(pSearch)
                              select new mLink
                              {
                                  link_title = n.link_title,
@@ -303,7 +303,7 @@ namespace Alstar.da
         public List<mArticle> fArticlesList(mHome pHome)
         {
                     var vArticles = (from a in Db.tbl_article
-                                     where a.article_title.Contains(pHome.search_title)
+                                     where a.article_title.ContaIns(pHome.search_title)
                                      select new mArticle
                                      {
                                          article_id = a.article_id,

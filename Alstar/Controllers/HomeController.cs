@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Alstar.da;
+using Alstar.Models;
+using Alstar.Models.database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,22 +11,47 @@ namespace Alstar.Controllers
 {
     public class HomeController : Controller
     {
+        daHome h = new daHome();
+        daCategory c = new daCategory();
+        AlstarDb Db = new AlstarDb();
+
         public ActionResult Index()
         {
-            return View();
+            mHome vHome = new mHome();
+            mCategory vCat = new mCategory();
+            vCat.category_type = 3;
+            List<mCategory> aCat = new List<mCategory>();
+            aCat = c.fCategoryList(12, 0, vCat.category_type);
+            vHome = h.fGetHomeContent();
+            if (vHome == null)
+            {
+                vHome = new mHome();
+            }
+            vHome.aCategoryGallery = aCat;
+           return View(vHome);
         }
-
-        public ActionResult About()
+        public ActionResult Search(string pSearch)
         {
-            
-            return View();
+            mHome vHome = new mHome();
+            vHome = h.fGetSearch(pSearch);
+            if (vHome == null)
+            {
+                vHome = new mHome();
+            }
+            return View(vHome);
         }
+        public ActionResult SearchCat(mHome pHome)
 
-        public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            mHome vHome = new mHome();
+            vHome = h.fGetSearch(pHome.pSearch);
+            if (vHome == null)
+            {
+                vHome = new mHome();
+            }
+            return PartialView("_Search",vHome);
         }
+     
+      
     }
 }

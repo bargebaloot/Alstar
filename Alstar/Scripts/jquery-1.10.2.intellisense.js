@@ -51,7 +51,7 @@ intellisense.annotate(jQuery, {
     /// <returns type="Boolean" />
   },
   'browser': function() {
-    /// <summary>Contains flags for the useragent, read from navigator.userAgent. We recommend against using this property; please try to use feature detection instead (see jQuery.support). jQuery.browser may be moved to a plugin in a future release of jQuery.</summary>
+    /// <summary>ContaIns flags for the useragent, read from navigator.userAgent. We recommend agaInst using this property; please try to use feature detection instead (see jQuery.support). jQuery.browser may be moved to a plugin in a future release of jQuery.</summary>
     /// <returns type="PlainObject" />
   },
   'browser.version': function() {
@@ -65,7 +65,7 @@ intellisense.annotate(jQuery, {
     ///   <returns type="Callbacks" />
     /// </signature>
   },
-  'contains': function() {
+  'contaIns': function() {
     /// <signature>
     ///   <summary>Check to see if a DOM element is a descendant of another DOM element.</summary>
     ///   <param name="container" type="Element">The DOM element that may contain the other element.</param>
@@ -172,7 +172,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Finds the elements of an array which satisfy a filter function. The original array is not affected.</summary>
     ///   <param name="array" type="Array">The array to search through.</param>
-    ///   <param name="function(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the item, and the second argument is the index.  The function should return a Boolean value.  this will be the global window object.</param>
+    ///   <param name="function(elementOfArray, indexInArray)" type="Function">The function to process each item agaInst.  The first argument to the function is the item, and the second argument is the index.  The function should return a Boolean value.  this will be the global window object.</param>
     ///   <param name="invert" type="Boolean">If "invert" is false, or not provided, then the function returns an array consisting of all elements for which "callback" returns true.  If "invert" is true, then the function returns an array consisting of all elements for which "callback" returns false.</param>
     ///   <returns type="Array" />
     /// </signature>
@@ -208,7 +208,7 @@ intellisense.annotate(jQuery, {
   },
   'isEmptyObject': function() {
     /// <signature>
-    ///   <summary>Check to see if an object is empty (contains no enumerable properties).</summary>
+    ///   <summary>Check to see if an object is empty (contaIns no enumerable properties).</summary>
     ///   <param name="object" type="Object">The object that will be checked to see if it's empty.</param>
     ///   <returns type="Boolean" />
     /// </signature>
@@ -259,13 +259,13 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Translate all items in an array or object to new array of items.</summary>
     ///   <param name="array" type="Array">The Array to translate.</param>
-    ///   <param name="callback(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the array item, the second argument is the index in array The function can return any value. Within the function, this refers to the global (window) object.</param>
+    ///   <param name="callback(elementOfArray, indexInArray)" type="Function">The function to process each item agaInst.  The first argument to the function is the array item, the second argument is the index in array The function can return any value. Within the function, this refers to the global (window) object.</param>
     ///   <returns type="Array" />
     /// </signature>
     /// <signature>
     ///   <summary>Translate all items in an array or object to new array of items.</summary>
     ///   <param name="arrayOrObject" type="Object">The Array or Object to translate.</param>
-    ///   <param name="callback( value, indexOrKey )" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
+    ///   <param name="callback( value, indexOrKey )" type="Function">The function to process each item agaInst.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
     ///   <returns type="Array" />
     /// </signature>
   },
@@ -747,7 +747,7 @@ intellisense.annotate(jQuery.fn, {
   'addBack': function() {
     /// <signature>
     ///   <summary>Add the previous set of elements on the stack to the current set, optionally filtered by a selector.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match the current set of elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match the current set of elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -883,21 +883,21 @@ intellisense.annotate(jQuery.fn, {
     ///   <returns type="jQuery" />
     /// </signature>
   },
-  'attributeContains': function() {
+  'attributeContaIns': function() {
     /// <signature>
     ///   <summary>Selects elements that have the specified attribute with a value containing the a given substring.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
     ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
     /// </signature>
   },
-  'attributeContainsPrefix': function() {
+  'attributeContaInsPrefix': function() {
     /// <signature>
     ///   <summary>Selects elements that have the specified attribute with a value either equal to a given string or starting with that string followed by a hyphen (-).</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
     ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
     /// </signature>
   },
-  'attributeContainsWord': function() {
+  'attributeContaInsWord': function() {
     /// <signature>
     ///   <summary>Selects elements that have the specified attribute with a value containing a given word, delimited by spaces.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
@@ -1025,7 +1025,7 @@ intellisense.annotate(jQuery.fn, {
   'children': function() {
     /// <signature>
     ///   <summary>Get the children of each element in the set of matched elements, optionally filtered by a selector.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1071,27 +1071,27 @@ intellisense.annotate(jQuery.fn, {
   'closest': function() {
     /// <signature>
     ///   <summary>For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <param name="context" type="Element">A DOM element within which a matching element may be found. If no context is passed in then the context of the jQuery set will be used instead.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.</summary>
-    ///   <param name="jQuery object" type="jQuery">A jQuery object to match elements against.</param>
+    ///   <param name="jQuery object" type="jQuery">A jQuery object to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.</summary>
-    ///   <param name="element" type="Element">An element to match elements against.</param>
+    ///   <param name="element" type="Element">An element to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
-  'contains': function() {
+  'contaIns': function() {
     /// <signature>
     ///   <summary>Select all elements that contain the specified text.</summary>
     ///   <param name="text" type="String">A string of text to look for. It's case sensitive.</param>
@@ -1344,7 +1344,7 @@ intellisense.annotate(jQuery.fn, {
   'filter': function() {
     /// <signature>
     ///   <summary>Reduce the set of matched elements to those that match the selector or pass the function's test.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match the current set of elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match the current set of elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1354,29 +1354,29 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Reduce the set of matched elements to those that match the selector or pass the function's test.</summary>
-    ///   <param name="element" type="Element">An element to match the current set of elements against.</param>
+    ///   <param name="element" type="Element">An element to match the current set of elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Reduce the set of matched elements to those that match the selector or pass the function's test.</summary>
-    ///   <param name="jQuery object" type="Object">An existing jQuery object to match the current set of elements against.</param>
+    ///   <param name="jQuery object" type="Object">An existing jQuery object to match the current set of elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
   'find': function() {
     /// <signature>
     ///   <summary>Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.</summary>
-    ///   <param name="jQuery object" type="Object">A jQuery object to match elements against.</param>
+    ///   <param name="jQuery object" type="Object">A jQuery object to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.</summary>
-    ///   <param name="element" type="Element">An element to match elements against.</param>
+    ///   <param name="element" type="Element">An element to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1451,12 +1451,12 @@ intellisense.annotate(jQuery.fn, {
   'has': function() {
     /// <signature>
     ///   <summary>Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.</summary>
-    ///   <param name="contained" type="Element">A DOM element to match elements against.</param>
+    ///   <param name="contained" type="Element">A DOM element to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1601,23 +1601,23 @@ intellisense.annotate(jQuery.fn, {
   },
   'is': function() {
     /// <signature>
-    ///   <summary>Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <summary>Check the current matched set of elements agaInst a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="Boolean" />
     /// </signature>
     /// <signature>
-    ///   <summary>Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
+    ///   <summary>Check the current matched set of elements agaInst a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
     ///   <param name="function(index)" type="Function">A function used as a test for the set of elements. It accepts one argument, index, which is the element's index in the jQuery collection.Within the function, this refers to the current DOM element.</param>
     ///   <returns type="Boolean" />
     /// </signature>
     /// <signature>
-    ///   <summary>Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
-    ///   <param name="jQuery object" type="Object">An existing jQuery object to match the current set of elements against.</param>
+    ///   <summary>Check the current matched set of elements agaInst a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
+    ///   <param name="jQuery object" type="Object">An existing jQuery object to match the current set of elements agaInst.</param>
     ///   <returns type="Boolean" />
     /// </signature>
     /// <signature>
-    ///   <summary>Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
-    ///   <param name="element" type="Element">An element to match the current set of elements against.</param>
+    ///   <summary>Check the current matched set of elements agaInst a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
+    ///   <param name="element" type="Element">An element to match the current set of elements agaInst.</param>
     ///   <returns type="Boolean" />
     /// </signature>
   },
@@ -1831,7 +1831,7 @@ intellisense.annotate(jQuery.fn, {
   'next': function() {
     /// <signature>
     ///   <summary>Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1852,7 +1852,7 @@ intellisense.annotate(jQuery.fn, {
   'nextAll': function() {
     /// <signature>
     ///   <summary>Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1860,20 +1860,20 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object passed.</summary>
     ///   <param name="selector" type="String">A string containing a selector expression to indicate where to stop matching following sibling elements.</param>
-    ///   <param name="filter" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="filter" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object passed.</summary>
     ///   <param name="element" type="Element">A DOM node or jQuery object indicating where to stop matching following sibling elements.</param>
-    ///   <param name="filter" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="filter" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
   'not': function() {
     /// <signature>
     ///   <summary>Remove elements from the set of matched elements.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1888,7 +1888,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Remove elements from the set of matched elements.</summary>
-    ///   <param name="jQuery object" type="PlainObject">An existing jQuery object to match the current set of elements against.</param>
+    ///   <param name="jQuery object" type="PlainObject">An existing jQuery object to match the current set of elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2014,14 +2014,14 @@ intellisense.annotate(jQuery.fn, {
   'parent': function() {
     /// <signature>
     ///   <summary>Get the parent of each element in the current set of matched elements, optionally filtered by a selector.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
   'parents': function() {
     /// <signature>
     ///   <summary>Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2029,13 +2029,13 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector, DOM node, or jQuery object.</summary>
     ///   <param name="selector" type="String">A string containing a selector expression to indicate where to stop matching ancestor elements.</param>
-    ///   <param name="filter" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="filter" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector, DOM node, or jQuery object.</summary>
     ///   <param name="element" type="Element">A DOM node or jQuery object indicating where to stop matching ancestor elements.</param>
-    ///   <param name="filter" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="filter" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2069,14 +2069,14 @@ intellisense.annotate(jQuery.fn, {
   'prev': function() {
     /// <signature>
     ///   <summary>Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
   'prevAll': function() {
     /// <signature>
     ///   <summary>Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2084,13 +2084,13 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object.</summary>
     ///   <param name="selector" type="String">A string containing a selector expression to indicate where to stop matching preceding sibling elements.</param>
-    ///   <param name="filter" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="filter" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object.</summary>
     ///   <param name="element" type="Element">A DOM node or jQuery object indicating where to stop matching preceding sibling elements.</param>
-    ///   <param name="filter" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="filter" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2323,7 +2323,7 @@ intellisense.annotate(jQuery.fn, {
   'siblings': function() {
     /// <signature>
     ///   <summary>Get the siblings of each element in the set of matched elements, optionally filtered by a selector.</summary>
-    ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
+    ///   <param name="selector" type="String">A string containing a selector expression to match elements agaInst.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },

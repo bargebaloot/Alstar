@@ -347,7 +347,7 @@
 
 		// Attempt to discover whether the target element is contained within a scrollable layer. Re-check if the
 		// target element was moved to another parent.
-		if (!scrollParent || !scrollParent.contains(targetElement)) {
+		if (!scrollParent || !scrollParent.contaIns(targetElement)) {
 			parentElement = targetElement;
 			do {
 				if (parentElement.scrollHeight > parentElement.offsetHeight) {

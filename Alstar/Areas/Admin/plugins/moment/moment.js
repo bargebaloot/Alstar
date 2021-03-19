@@ -1199,7 +1199,7 @@
 
     var defaultLocaleWeek = {
         dow : 0, // Sunday is the first day of the week.
-        doy : 6  // The week that contains Jan 1st is the first week of the year.
+        doy : 6  // The week that contaIns Jan 1st is the first week of the year.
     };
 
     function localeFirstDayOfWeek () {
@@ -2732,7 +2732,7 @@
 
     function create__createDuration (input, key) {
         var duration = input,
-            // matching against regexp is expensive, do it on demand
+            // matching agaInst regexp is expensive, do it on demand
             match = null,
             sign,
             ret,

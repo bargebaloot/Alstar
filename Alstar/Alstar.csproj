@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -185,7 +186,9 @@
     <Compile Include="Areas\Admin\Controllers\mLinkController.cs" />
     <Compile Include="Areas\Admin\Controllers\mSliderController.cs" />
     <Compile Include="Areas\Admin\Controllers\mVideoController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="da\daAbout.cs" />
     <Compile Include="da\daAdmin.cs" />
     <Compile Include="da\daArticle.cs" />

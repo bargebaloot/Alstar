@@ -48,7 +48,7 @@ namespace Alstar.da
         {
 
                 var vCenter = (from a in Db.tbl_center
-                               where a.center_city.Contains(pCenter.center_city) || a.center_title.Contains(pCenter.center_city)
+                               where a.center_city.ContaIns(pCenter.center_city) || a.center_title.ContaIns(pCenter.center_city)
                                select new mCenter
                                {
                                    center_id = a.center_id,
@@ -138,7 +138,7 @@ namespace Alstar.da
         public bool IsDecimal(decimal pNum)
         {
             string pNumStr = pNum.ToString();
-            if (pNumStr.Contains('.'))
+            if (pNumStr.ContaIns('.'))
             {
                 return true;
             }
