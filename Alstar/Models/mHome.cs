@@ -13,11 +13,11 @@ namespace Alstar.Models
         public mArticle Articles { get; set; }
         public mNews Blog { get; set; }
         public mLink Link { get; set; }
-        public mProduct Ins { get; set; }
+        public mProduct aProduct { get; set; }
         public mArticle Article { get; set; }
         public List<mCategory> aCategory { get; set; }
         public List<mCategory> aCategoryGallery { get; set; }
-        public List<mProduct> aIns { get; set; }
+        public List<mProduct> aProducts { get; set; }
         public List<mNews> aNews { get; set; }
         public List<mSlider> aSlider { get; set; }
         public List<mGallery> aGallery { get; set; }

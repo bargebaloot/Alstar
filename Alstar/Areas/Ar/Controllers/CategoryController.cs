@@ -1,14 +1,10 @@
-﻿using Alstar.da;
-using Alstar.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Services;
 
-namespace Alstar.Controllers
+namespace Alstar.Areas.Ar.Controllers
 {
     public class CategoryController : Controller
     {
@@ -39,9 +35,9 @@ namespace Alstar.Controllers
                 vAbout.about_us_type = 1;
                 vAbout2.about_us_type = 2;
                 vAbout = a.fGetAbout(vAbout);
-                vAbout2 = a.fGetAbout(vAbout2);              
+                vAbout2 = a.fGetAbout(vAbout2);
                 vHome.About = vAbout;
-                vHome.About2 = vAbout2;                         
+                vHome.About2 = vAbout2;
                 return View(vHome);
             }
             catch
@@ -73,7 +69,7 @@ namespace Alstar.Controllers
                 {
                     Random rnd = new Random();
                     string file = "";
-                    
+
                     file = rnd.Next().ToString() + pContact.img_file2.FileName;
 
                     string Path = System.IO.Path.Combine(Server.MapPath("~/images/contact/"));
@@ -101,8 +97,8 @@ namespace Alstar.Controllers
             {
                 pContact.pError = "ثبت نظر شما با مشکل مواجه شده است.";
             }
-            _exit_line:
-            return View("Contact",pContact);
+        _exit_line:
+            return View("Contact", pContact);
         }
         public ActionResult FeedbackBoxPost(mContact pContact)
         {
@@ -140,7 +136,7 @@ namespace Alstar.Controllers
             {
                 pContact.pError = "ثبت نظر شما با مشکل مواجه شده است.";
             }
-            _exit_line:
+        _exit_line:
             return View("FeedBackBox", pContact);
         }
 
@@ -219,7 +215,7 @@ namespace Alstar.Controllers
                 vHome.aArticles = new List<mArticle>();
             }
             return View(vHome);
-            
+
         }
         public ActionResult Articles()
         {
@@ -327,7 +323,7 @@ namespace Alstar.Controllers
             {
                 vHome.page_number = (pSkip / 12) + 1;
             }
-            aCenter = ce.fCenterList(pGet, pSkip,pCenter, vHome);
+            aCenter = ce.fCenterList(pGet, pSkip, pCenter, vHome);
             aCat = c.fCategoryList(20, 0, vCat.category_type);
             if (aCenter != null && aCenter.Count > 0)
             {
@@ -370,7 +366,7 @@ namespace Alstar.Controllers
             aNews = b.fNewsList(pGet, pSkip);
             aLinks = l.fLinkList(12, 0, vLink);
 
-            if (aNews != null && aNews.Count>0)
+            if (aNews != null && aNews.Count > 0)
             {
                 vHome.aNews = aNews;
             }
@@ -411,10 +407,10 @@ namespace Alstar.Controllers
             {
                 vHome.page_number = (pSkip / 12) + 1;
             }
-            aGallery = g.fGalleryList(pGet, pSkip,pId);
+            aGallery = g.fGalleryList(pGet, pSkip, pId);
             aCat = c.fCategoryList(12, 0, vCat.category_type);
 
-            if (aGallery != null && aGallery.Count>0)
+            if (aGallery != null && aGallery.Count > 0)
             {
                 vHome.aGallery = aGallery;
             }
@@ -431,7 +427,7 @@ namespace Alstar.Controllers
                 vHome.aCategory = new List<mCategory>();
             }
             return View(vHome);
-        }           
+        }
         public ActionResult customers()
         {
             mLink vLink = new mLink();
@@ -503,7 +499,7 @@ namespace Alstar.Controllers
         {
             mHome vHome = new mHome();
             List<mFeedback> aFeedback = new List<mFeedback>();
-            aFeedback = fe.fFeedbackList(pGet, pSkip);         
+            aFeedback = fe.fFeedbackList(pGet, pSkip);
             if (aFeedback != null && aFeedback.Count > 0)
             {
                 vHome.aFeedback = aFeedback;
@@ -512,7 +508,7 @@ namespace Alstar.Controllers
             {
                 vHome.aFeedback = new List<mFeedback>();
             }
-           return View(vHome);
+            return View(vHome);
         }
         public ActionResult FeedbackBox()
         {
@@ -561,7 +557,7 @@ namespace Alstar.Controllers
                 int pId = 3;
                 List<mGallery> aGallery = new List<mGallery>();
                 aGallery = g.fGalleryList(pGet, pSkip, pId);
-                if(aGallery != null)
+                if (aGallery != null)
                 {
                     vHome.aGallery = aGallery;
                 }
@@ -850,7 +846,7 @@ namespace Alstar.Controllers
             {
                 vHome.aCenter = new List<mCenter>();
             }
-            return PartialView("_SearchCenter",vHome);
+            return PartialView("_SearchCenter", vHome);
 
         }
     }

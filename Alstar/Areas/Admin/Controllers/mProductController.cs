@@ -39,10 +39,10 @@ namespace Alstar.Areas.Admin.Controllers
                 return RedirectToAction("LoginForm", "Login");
 
             }
-            List<mProduct> aInsurance = new List<mProduct>();
-            aInsurance = p.fInsList(pGet, pSkip,0);
+            List<mProduct> aProduct = new List<mProduct>();
+            aProduct = p.fInsList(pGet, pSkip,0);
             ViewBag.title = "فهرست محصولات";
-            return View(aInsurance);
+            return View(aProduct);
         }
 
         [HttpGet]

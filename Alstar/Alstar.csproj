@@ -186,6 +186,14 @@
     <Compile Include="Areas\Admin\Controllers\mLinkController.cs" />
     <Compile Include="Areas\Admin\Controllers\mSliderController.cs" />
     <Compile Include="Areas\Admin\Controllers\mVideoController.cs" />
+    <Compile Include="Areas\Ar\ArAreaRegistration.cs" />
+    <Compile Include="Areas\Ar\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Ar\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Ar\Controllers\PageController.cs" />
+    <Compile Include="Areas\En\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\En\Controllers\HomeController.cs" />
+    <Compile Include="Areas\En\Controllers\PageController.cs" />
+    <Compile Include="Areas\En\EnAreaRegistration.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
@@ -647,6 +655,8 @@
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\welcome.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\En\Views\web.config" />
+    <Content Include="Areas\Ar\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -677,6 +687,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Ar\Data\" />
+    <Folder Include="Areas\Ar\Views\Category\" />
+    <Folder Include="Areas\Ar\Views\Home\" />
+    <Folder Include="Areas\Ar\Views\Page\" />
+    <Folder Include="Areas\Ar\Views\Shared\" />
+    <Folder Include="Areas\En\Data\" />
+    <Folder Include="Areas\En\Views\Category\" />
+    <Folder Include="Areas\En\Views\Home\" />
+    <Folder Include="Areas\En\Views\Page\" />
+    <Folder Include="Areas\En\Views\Shared\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
